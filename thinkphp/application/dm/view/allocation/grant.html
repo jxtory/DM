@@ -1,0 +1,279 @@
+﻿<!DOCTYPE html>
+<!--
+BeyondAdmin - Responsive Admin Dashboard Template build with Twitter Bootstrap 3.3.6
+Version: 1.6.0
+Purchase: https://wrapbootstrap.com/theme/beyondadmin-adminapp-angularjs-mvc-WB06R48S4
+-->
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!-- Head -->
+<head>
+    <meta charset="utf-8" />
+    <title>设备管理系统</title>
+    {include file='common/head' /}
+    <link rel="stylesheet" href="__dm__/css/bootstrap-datetimepicker.min.css">
+    <link rel="stylesheet" href="__dm__/css/validation.css">
+</head>
+<!-- /Head -->
+<!-- Body -->
+<body>
+    <!-- Navbar -->
+    {include file='common/nav' /}
+    <!-- /Navbar -->
+    <!-- Main Container -->
+    <div class="main-container container-fluid">
+        <!-- Page Container -->
+        <div class="page-container">
+            <!-- Page Sidebar -->
+            {include file='common/sidebar' /}
+            <!-- /Page Sidebar -->
+            <!-- Page Content -->
+            <div class="page-content">
+                <!-- Page Breadcrumb -->
+                <div class="page-breadcrumbs">
+                    <ul class="breadcrumb">
+                        <li>
+                            <i class="fa fa-home"></i>
+                            <a href="">设备管理系统</a>
+                        </li>
+                        <li>分配中心</li>
+                        <li class="active">设备发放</li>
+                    </ul>
+                </div>
+                <!-- /Page Breadcrumb -->
+                <!-- Page Body -->
+                <div class="page-body">
+                    <div class="row">
+                        <div class="well">
+                            <div class="widget flat radius-bordered">
+                                <div class="widget-header bg-themeprimary">
+                                    <span class="widget-caption">设备发放<span></span></span>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <form id="grantdata">
+                                        <div class="col-lg-6 col-sm-6 col-xs-12">
+                                            <h4>领用信息：</h4>
+                                            <div class="form-group">
+                                                <label for="ds_pid">领用人 ID</label>
+                                                <input type="text" class="form-control" id="ds_pid" name="ds_pid" placeholder="输入领用人ID编号 (可以使用关键字查询) 如姓名、拼音">
+                                                <div id="getHolderInfoDiv" style="display: none;">
+                                                    <table id="getHolderInfo" class="table table-hover table-striped table-bordered table-condensed">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>
+                                                                    #ID
+                                                                </th>
+                                                                <th>
+                                                                    姓名
+                                                                </th>
+                                                                <th>
+                                                                    性别
+                                                                </th>
+                                                                <th>
+                                                                    岗位
+                                                                </th>
+                                                                <th>
+                                                                    一级部门
+                                                                </th>
+                                                                <th>
+                                                                    二级部门
+                                                                </th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="ds_an">固资编号</label>
+                                                <input type="text" class="form-control" id="ds_an" name="ds_an" placeholder="输入固定资产编号 (可以使用关键字查询) 如类型、品牌、型号">
+                                                <div id="getDeviceInfoDiv" style="display: none;">
+                                                    <table id="getDeviceInfo" class="table table-hover table-striped table-bordered table-condensed">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>
+                                                                    固资编号
+                                                                </th>
+                                                                <th>
+                                                                    设备类型
+                                                                </th>
+                                                                <th>
+                                                                    品牌
+                                                                </th>
+                                                                <th>
+                                                                    型号
+                                                                </th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <h7>
+                                                    {if condition="empty($components) eq true"}
+                                                    配件
+                                                    <span id="tipinfo" style="display: none;">
+                                                        <a href="javascript:void(0);" class="badge badge-info" data-container="body" data-titleclass="bordered-blue" data-class="" data-toggle="popover-hover" data-placement="right" data-title="提示:" data-content="可以在[设备管理]——>[配件设置]中添加配件!" data-original-title="" title="">
+                                                            ?
+                                                        </a>
+                                                    </span>
+                                                    {else /}
+                                                    配件
+                                                    {/if}
+                                                </h7>
+                                                <div class="row">
+                                                    {volist name="components" id="data"}
+                                                    <div class="col-lg-4 col-sm-4 col-xs-4">
+                                                        <div class="checkbox">
+                                                            <label>
+                                                                <input type="checkbox" name="ds_component" value="{$data['component']}" class="colored-success">
+                                                                <span class="text">{$data['component']}</span>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    {/volist}
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="ds_time">领取日期</label>
+                                                <input type="text" class="form-control" id="ds_time" name="ds_time" data-date="" data-date-format="yyyy-mm-dd" data-link-format="yyyy-mm-dd">
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-lg-3 col-sm-3 col-xs-3">
+                                        <div class="buttons-preview" id="grantdata_submit">
+                                            <a href="javascript:void(0);" class="btn btn-success">发放</a>
+                                            <a href="javascript:void(0);" class="btn btn-danger">重置</a>
+                                        </div>
+                                    </div>
+                                </div>                                
+                            </div>     
+                        </div>
+                    </div>
+                </div>
+                <!-- /Page Body -->
+            </div>
+            <!-- /Page Content -->
+        </div>
+        <!-- /Page Container -->
+        <!-- Main Container -->
+
+    </div>
+
+    <!-- Need Scripts -->
+    {include file='common/script' /}
+    <!-- /Need Scripts -->
+    <!--Page Related Scripts-->
+    <script src="__dm__/js/dmallocation.js"></script>
+    <script src="__dm__/js/bsdtp/bootstrap-datetimepicker.js"></script>
+    <script src="__dm__/js/bsdtp/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+    <script src="__dm__/js/jquery-validation-1.14.0/dist/jquery.validate.js"></script>
+    <script src="__dm__/js/jquery-validation-1.14.0/dist/localization/messages_zh.js"></script>
+
+    <script type="text/javascript">
+        $('#ds_time').datetimepicker({
+            language:  'zh-CN',
+            weekStart: 1,
+            todayBtn:  1,
+            autoclose: 1,
+            todayHighlight: 1,
+            startView: 2,
+            minView: 2,
+            forceParse: 0
+        });       
+
+        function validaform(){
+            return $("#grantdata").validate({
+                rules:{
+                    ds_pid: {
+                        required: true,
+                        remote: {
+                            url: 'inputcheck.html',
+                            type: "post",
+                            data: {
+                                type: "grant_pid",
+                                ds_pid: function(){
+                                    return $("#ds_pid").val();
+                                }
+                            }
+                        }
+                    },
+                    ds_an: {
+                        required: true,
+                        remote: {
+                            url: 'inputcheck.html',
+                            type: "post",
+                            data: {
+                                type: "grant_an",
+                                ds_an: function(){return $("#ds_an").val();}
+                            }
+                        }
+                    },
+                    ds_time: {
+                        required: true,
+                        dateISO: true
+                    }
+                },
+                messages:{
+                    ds_pid: {
+                        required: "领用人ID不能为空",
+                        remote: "领用人ID不存在!"
+                    },
+                    ds_an: {
+                        required: "固资编号不能为空",
+                        remote: "固资不存在，或已经发放！"
+                    },
+                    ds_time: {
+                        required: '日期不能为空',
+                        dateISO: "日期格式不正确"
+                    },
+                }
+
+            });
+        }
+        $(function(){
+            $("#getHolderInfoDiv").hide();
+            $("#getDeviceInfoDiv").hide();
+            $("#tipinfo").fadeIn(3000);
+            setInterval(function(){
+                var e = jQuery.Event("keyup");//模拟一个键盘事件
+                e.keyCode =13;//keyCode=13是回车
+                $("#ds_time").trigger(e);                
+            }, 1000);
+            $.validator.setDefaults({
+               debug: true
+            });
+            $(validaform());
+            // $("#tipinfo").click(function(){
+            //     bootbox.alert("提示：可以在[设备管理]——>[配件设置]中添加配件!");
+            //     $(this).remove();
+            // });
+        });
+
+        $("#grantdata_submit a:first").on("click",function(event){
+            if(validaform().form()){
+                grantdatasubmit();
+
+                //防止重复提交
+                $("#grantdata").find("input").val("");
+                $(this).remove();
+            } else {
+
+            }
+
+        });
+
+
+    </script>
+</body>
+<!--  /Body -->
+</html>

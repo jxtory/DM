@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<!--
+BeyondAdmin - Responsive Admin Dashboard Template build with Twitter Bootstrap 3.3.6
+Version: 1.6.0
+Purchase: https://wrapbootstrap.com/theme/beyondadmin-adminapp-angularjs-mvc-WB06R48S4
+-->
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!-- Head -->
+<head>
+    <meta charset="utf-8" />
+    <title>设备管理系统</title>
+    {include file='common/head' /}
+    <link rel="stylesheet" href="__dm__/css/validation.css">
+</head>
+<!-- /Head -->
+<!-- Body -->
+<body>
+    <!-- Navbar -->
+    {include file='common/nav' /}
+    <!-- /Navbar -->
+    <!-- Main Container -->
+    <div class="main-container container-fluid">
+        <!-- Page Container -->
+        <div class="page-container">
+            <!-- Page Sidebar -->
+            {include file='common/sidebar' /}
+            <!-- /Page Sidebar -->
+            <!-- Page Content -->
+            <div class="page-content">
+                <!-- Page Breadcrumb -->
+                <div class="page-breadcrumbs">
+                    <ul class="breadcrumb">
+                        <li>
+                            <i class="fa fa-home"></i>
+                            <a href="#">设备管理系统</a>
+                        </li>
+                        <li>设备管理</li>
+                        <li class="active">配件设置</li>
+                    </ul>
+                </div>
+                <!-- /Page Breadcrumb -->
+                <!-- Page Body -->
+                <div class="page-body">
+                    <div class="row">
+                        <div class="well">
+                            <div class="widget flat radius-bordered">
+                                <div class="widget-header bg-themeprimary">
+                                    <span class="widget-caption">配件设置<span></span></span>
+                                </div>
+                                <hr>
+                                <form id="componentdata">
+                                    <label for="componentbox">输入要添加的[配件]]并按下回车：</label>
+                                    <input type="text" class="form-control input-xs" id="componentbox" name="componentbox" placeholder="">
+                                    <span class="visible-xs">
+                                        <a class="btn btn-primary btn-xs" href="javascript:void(0);"><i class="fa fa-plus"></i> 确认</a>
+                                    </span>
+                                </form>
+                                <hr>
+                                <div class="row">
+                                    <div class="well">
+                                        <h4 class="block">配件：</h4>
+                                        <div id="componentboxs">
+                                            {volist name="components" id="vo"}
+                                                <div class="btn-group" id="{$vo['component']}">
+                                                    <a class="btn btn-blue tooltip-palegreen" href="javascript:void(0);"  data-toggle="tooltip" data-placement="top" data-original-title="类型：{$vo['component']}">{$vo['component']}</a>
+                                                    <a class="btn btn-blue dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);"><i class="fa fa-angle-down"></i></a>
+                                                    <ul class="dropdown-menu dropdown-blue">
+                                                        <li>
+                                                            <a href="javascript:void(0);" data-title="{$vo['component']}">编辑名称</a>
+                                                        </li>
+                                                        <li class="divider"></li>
+                                                        <li>
+                                                            <a href="javascript:void(0);" data-title="{$vo['component']}">删除</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            {/volist}
+                                            
+                                        </div>
+                                    </div>
+                                </div>                                
+                            </div>     
+                        </div>
+                    </div>
+
+                </div>
+                <!-- /Page Body -->
+            </div>
+            <!-- /Page Content -->
+        </div>
+        <!-- /Page Container -->
+        <!-- Main Container -->
+
+    </div>
+
+    <!-- Need Scripts -->
+    {include file='common/script' /}
+    <!-- /Need Scripts -->
+    <!--Page Related Scripts-->
+    <!--Bootstrap Tags Input-->
+    <script src="__dm__/js/dmdatas.js"></script>
+    <script src="__dm__/js/jquery-validation-1.14.0/dist/jquery.validate.js"></script>
+    <script src="__dm__/js/jquery-validation-1.14.0/dist/localization/messages_zh.js"></script>
+
+
+    <script type="text/javascript">
+        function vld_component(){
+            return $("#componentdata").validate({
+                rules:{
+                    componentbox: {
+                        required: true,
+                        minlength: 2,
+                        maxlength: 15
+                    }
+                },
+                messages:{
+                    componentbox: {
+                        required: "配件不能为空",
+                        minlength: "至少两个字",
+                        maxlength: "不得超于十五个字"
+                    }
+                }
+
+            });
+        }
+
+        $(function(){
+            $.validator.setDefaults({
+               debug: true
+            });
+
+            $(vld_component());
+
+        });
+
+        $("#componentbox").keydown(function(event) {
+            if(event.which == 13){
+                if(vld_component().form()){
+                    componentsubmit();
+                } else {
+
+                }
+            }
+        });
+
+        $("#componentdata span a").click(function(){
+            if(vld_component().form()){
+                componentsubmit();
+            } else {
+
+            }
+        });
+
+    </script>
+
+</body>
+<!--  /Body -->
+</html>

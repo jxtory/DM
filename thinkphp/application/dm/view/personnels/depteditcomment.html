@@ -1,0 +1,130 @@
+﻿<!DOCTYPE html>
+{$deptname}
+<!--
+BeyondAdmin - Responsive Admin Dashboard Template build with Twitter Bootstrap 3.3.6
+Version: 1.6.0
+Purchase: https://wrapbootstrap.com/theme/beyondadmin-adminapp-angularjs-mvc-WB06R48S4
+-->
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!-- Head -->
+<head>
+    <meta charset="utf-8" />
+    <title>设备管理系统</title>
+    {include file='common/head' /}
+    <link rel="stylesheet" href="__dm__/css/validation.css">
+</head>
+<!-- /Head -->
+<!-- Body -->
+<body>
+    <!-- Navbar -->
+    {include file='common/nav' /}
+    <!-- /Navbar -->
+    <!-- Main Container -->
+    <div class="main-container container-fluid">
+        <!-- Page Container -->
+        <div class="page-container">
+            <!-- Page Sidebar -->
+            {include file='common/sidebar' /}
+            <!-- /Page Sidebar -->
+            <!-- Page Content -->
+            <div class="page-content">
+                <!-- Page Breadcrumb -->
+                <div class="page-breadcrumbs">
+                    <ul class="breadcrumb">
+                        <li>
+                            <i class="fa fa-home"></i>
+                            <a href="#">设备管理系统</a>
+                        </li>
+                        <li>人员管理</li>
+                        <li>部门设置</li>
+                        <li class="active">编辑描述</li>
+                    </ul>
+                </div>
+                <!-- /Page Breadcrumb -->
+                <!-- Page Body -->
+                <div class="page-body">
+                    <div class="row">
+                        <div class="well" id="commentedit" data-action="editcomment" data-level="{$deptlevel}" data-name="{$deptname}">
+                            <div class="widget-header bg-themeprimary">
+                                <span class="widget-caption">修改部门描述<span></span></span>
+                            </div>
+
+                            <h4 class="block">当前部门名称：{$deptname}</h4>
+                            <form id="editcommentdata">
+                                <label for="editcommentbox">输入要修改的部门描述，并按下回车键：</label>
+                                <input type="text" class="form-control input-xs" id="editcommentbox" name="editcommentbox" placeholder="" value="{$deptcomment}">
+                                <span class="visible-xs">
+                                    <a class="btn btn-primary btn-xs" href="javascript:void(0);"><i class="fa fa-plus"></i> 确认</a>
+                                </span>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- /Page Body -->
+            </div>
+            <!-- /Page Content -->
+        </div>
+        <!-- /Page Container -->
+        <!-- Main Container -->
+
+    </div>
+
+    <!-- Need Scripts -->
+    {include file='common/script' /}
+    <!-- /Need Scripts -->
+    <!--Page Related Scripts-->
+    <script src="__dm__/js/dmdatas.js"></script>
+    <script src="__dm__/js/jquery-validation-1.14.0/dist/jquery.validate.js"></script>
+    <script src="__dm__/js/jquery-validation-1.14.0/dist/localization/messages_zh.js"></script>
+
+    <script type="text/javascript">
+        function validaform(){
+            return $("#editcommentdata").validate({
+                rules:{
+                    editcommentbox: {
+                        required: true,
+                        maxlength: 30
+                    }
+                },
+                messages:{
+                    editcommentbox: {
+                        required: "部门描述不能为空",
+                        maxlength: "不得超于30个字"
+                    }
+                }
+
+            });
+        }
+        $(function(){
+            $.validator.setDefaults({
+               debug: true
+            });
+
+            $(validaform());
+        });
+
+        $("#editcommentbox").keydown(function(event) {
+            if(event.which == 13){
+                event.preventDefault();
+                if(validaform().form()){
+                    editcommentsubmit();
+                } else {
+
+                }
+            }
+        });
+
+        $("#editcommentdata span a").click(function() {
+            if(validaform().form()){
+                editcommentsubmit();
+            } else {
+
+            }
+        });
+
+    </script>
+</body>
+<!--  /Body -->
+</html>

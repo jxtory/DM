@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<!--
+BeyondAdmin - Responsive Admin Dashboard Template build with Twitter Bootstrap 3.3.6
+Version: 1.6.0
+Purchase: https://wrapbootstrap.com/theme/beyondadmin-adminapp-angularjs-mvc-WB06R48S4
+-->
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!-- Head -->
+<head>
+    <meta charset="utf-8" />
+    <title>设备管理系统</title>
+    {include file='common/head' /}
+    <link rel="stylesheet" href="__dm__/css/validation.css">
+</head>
+<!-- /Head -->
+<!-- Body -->
+<body>
+    <!-- Navbar -->
+    {include file='common/nav' /}
+    <!-- /Navbar -->
+    <!-- Main Container -->
+    <div class="main-container container-fluid">
+        <!-- Page Container -->
+        <div class="page-container">
+            <!-- Page Sidebar -->
+            {include file='common/sidebar' /}
+            <!-- /Page Sidebar -->
+            <!-- Page Content -->
+            <div class="page-content">
+                <!-- Page Breadcrumb -->
+                <div class="page-breadcrumbs">
+                    <ul class="breadcrumb">
+                        <li>
+                            <i class="fa fa-home"></i>
+                            <a href="#">设备管理系统</a>
+                        </li>
+                        <li>设备管理</li>
+                        <li class="active">内容设置</li>
+                    </ul>
+                </div>
+                <!-- /Page Breadcrumb -->
+                <!-- Page Body -->
+                <div class="page-body">
+                    <div class="row">
+                        <div class="well">
+                            <div class="widget flat radius-bordered">
+                                <div class="widget-header bg-themeprimary">
+                                    <span class="widget-caption">设置设备表的组成元素<span></span></span>
+                                </div>
+
+                                <div class="widget-body">
+                                    <div class="widget-main ">
+                                        <div class="tabbable">
+                                            <ul class="nav nav-tabs tabs-flat" id="content_tab">
+                                                <li class="active">
+                                                    <a data-toggle="tab" href="#devicetype">
+                                                        类型管理
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a data-toggle="tab" href="#brand">
+                                                        品牌管理
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a data-toggle="tab" href="#model">
+                                                        型号管理
+                                                    </a>
+                                                </li>
+
+                                            </ul>
+                                            <div class="tab-content tabs-flat">
+                                                <div id="devicetype" class="tab-pane in active">
+                                                    <form id="devicetypedata">
+                                                        <label for="dtbox">输入要添加的类型并按下回车：</label>
+                                                        <input type="text" class="form-control input-xs" id="dtbox" name="dtbox" placeholder="">
+                                                        <span class="visible-xs">
+                                                            <a class="btn btn-primary btn-xs" href="javascript:void(0);"><i class="fa fa-plus"></i> 确认</a>
+                                                        </span>
+                                                    </form>
+                                                    <hr>
+                                                    <div class="row">
+                                                        <div class="well">
+                                                            <h4 class="block">类型：</h4>
+                                                            <div id="dtboxs">
+                                                                {volist name="devicetypedata" id="vo"}
+                                                                    <div class="btn-group" id="{$vo['devicetype']}">
+                                                                        <a class="btn btn-blue tooltip-palegreen" href="javascript:void(0);"  data-toggle="tooltip" data-placement="top" data-original-title="类型：{$vo['devicetype']}">{$vo['devicetype']}</a>
+                                                                        <a class="btn btn-blue dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);"><i class="fa fa-angle-down"></i></a>
+                                                                        <ul class="dropdown-menu dropdown-blue">
+                                                                            <li>
+                                                                                <a href="javascript:void(0);" data-title="{$vo['devicetype']}">编辑名称</a>
+                                                                            </li>
+                                                                            <li class="divider"></li>
+                                                                            <li>
+                                                                                <a href="javascript:void(0);" data-title="{$vo['devicetype']}">删除</a>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </div>
+                                                                {/volist}
+                                                                
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+                                                <div id="brand" class="tab-pane">
+                                                    <form id="branddata">
+                                                        <label for="brandbox">输入要添加的品牌并按下回车：</label>
+                                                        <input type="text" class="form-control input-xs" id="brandbox" name="brandbox" placeholder="">
+                                                        <span class="visible-xs">
+                                                            <a class="btn btn-primary btn-xs" href="javascript:void(0);"><i class="fa fa-plus"></i> 确认</a>
+                                                        </span>
+                                                    </form>
+                                                    <hr>
+                                                    <div class="row">
+                                                        <div class="well">
+                                                            <h4 class="block">品牌：</h4>
+                                                            <div id="brandboxs">
+                                                                {volist name="branddata" id="vo"}
+                                                                    <div class="btn-group" id="{$vo['brand']}">
+                                                                        <a class="btn btn-blue tooltip-palegreen" href="javascript:void(0);"  data-toggle="tooltip" data-placement="top" data-original-title="类型：{$vo['brand']}">{$vo['brand']}</a>
+                                                                        <a class="btn btn-blue dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);"><i class="fa fa-angle-down"></i></a>
+                                                                        <ul class="dropdown-menu dropdown-blue">
+                                                                            <li>
+                                                                                <a href="javascript:void(0);" data-title="{$vo['brand']}">编辑名称</a>
+                                                                            </li>
+                                                                            <li class="divider"></li>
+                                                                            <li>
+                                                                                <a href="javascript:void(0);" data-title="{$vo['brand']}">删除</a>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </div>
+                                                                {/volist}
+                                                                
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div id="model" class="tab-pane">
+                                                    <form id="modeldata">
+                                                        <label for="modelbox">输入要添加的型号并按下回车：</label>
+                                                        <input type="text" class="form-control input-xs" id="modelbox" name="modelbox" placeholder="">
+                                                        <span class="visible-xs">
+                                                            <a class="btn btn-primary btn-xs" href="javascript:void(0);"><i class="fa fa-plus"></i> 确认</a>
+                                                        </span>
+                                                    </form>
+                                                    <hr>
+                                                    <div class="row">
+                                                        <div class="well">
+                                                            <h4 class="block">型号：</h4>
+                                                            <div id="modelboxs">
+                                                                {volist name="modeldata" id="vo"}
+                                                                    <div class="btn-group" id="{$vo['model']}">
+                                                                        <a class="btn btn-blue tooltip-palegreen" href="javascript:void(0);"  data-toggle="tooltip" data-placement="top" data-original-title="类型：{$vo['model']}">{$vo['model']}</a>
+                                                                        <a class="btn btn-blue dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);"><i class="fa fa-angle-down"></i></a>
+                                                                        <ul class="dropdown-menu dropdown-blue">
+                                                                            <li>
+                                                                                <a href="javascript:void(0);" data-title="{$vo['model']}">编辑名称</a>
+                                                                            </li>
+                                                                            <li class="divider"></li>
+                                                                            <li>
+                                                                                <a href="javascript:void(0);" data-title="{$vo['model']}">删除</a>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </div>
+                                                                {/volist}
+                                                                
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>     
+                        </div>
+                    </div>
+
+                </div>
+                <!-- /Page Body -->
+            </div>
+            <!-- /Page Content -->
+        </div>
+        <!-- /Page Container -->
+        <!-- Main Container -->
+
+    </div>
+
+    <!-- Need Scripts -->
+    {include file='common/script' /}
+    <!-- /Need Scripts -->
+    <!--Page Related Scripts-->
+    <!--Bootstrap Tags Input-->
+    <script src="__dm__/js/dmdatas.js"></script>
+    <script src="__dm__/js/jquery-validation-1.14.0/dist/jquery.validate.js"></script>
+    <script src="__dm__/js/jquery-validation-1.14.0/dist/localization/messages_zh.js"></script>
+
+
+    <script type="text/javascript">
+        function vld_dt(){
+            return $("#devicetypedata").validate({
+                rules:{
+                    dtbox: {
+                        required: true,
+                        minlength: 2,
+                        maxlength: 30
+                    }
+                },
+                messages:{
+                    dtbox: {
+                        required: "类型不能为空",
+                        minlength: "至少两个字",
+                        maxlength: "不得超于三十个字"
+                    }
+                }
+
+            });
+        }
+
+        function vld_bd(){
+            return $("#branddata").validate({
+                rules:{
+                    brandbox: {
+                        required: true,
+                        minlength: 2,
+                        maxlength: 30
+                    }
+                },
+                messages:{
+                    brandbox: {
+                        required: "品牌不能为空",
+                        minlength: "至少两个字",
+                        maxlength: "不得超于三十个字"
+                    }
+                }
+
+            });
+        }
+
+        function vld_ml(){
+            return $("#modeldata").validate({
+                rules:{
+                    modelbox: {
+                        required: true,
+                        minlength: 2,
+                        maxlength: 30
+                    }
+                },
+                messages:{
+                    modelbox: {
+                        required: "型号不能为空",
+                        minlength: "至少两个字",
+                        maxlength: "不得超于三十个字"
+                    }
+                }
+
+            });
+        }
+
+        $(function(){
+            $.validator.setDefaults({
+               debug: true
+            });
+
+            $(vld_dt());
+            $(vld_bd());
+            $(vld_ml());
+
+            if("{$Request.param.act}" == "dt"){
+                $("#content_tab a[href='#devicetype']").tab('show');
+            } else if("{$Request.param.act}" == "bd"){
+                $("#content_tab a[href='#brand']").tab('show');
+            } else if("{$Request.param.act}" == "ml"){
+                $("#content_tab a[href='#model']").tab('show');
+            }
+        });
+
+        $("#dtbox").keydown(function(event) {
+            if(event.which == 13){
+                if(vld_dt().form()){
+                    dtsubmit();
+                } else {
+
+                }
+            }
+        });
+
+        $("#brandbox").keydown(function(event) {
+            if(event.which == 13){
+                if(vld_bd().form()){
+                    bdsubmit();
+                } else {
+
+                }
+            }
+        });
+
+        $("#modelbox").keydown(function(event) {
+            if(event.which == 13){
+                if(vld_ml().form()){
+                    mlsubmit();
+                } else {
+
+                }
+            }
+        });
+
+        $("#devicetypedata span a").click(function(){
+            if(vld_dt().form()){
+                dtsubmit();
+            } else {
+
+            }
+        });
+
+        $("#branddata span a").click(function(){
+            if(vld_bd().form()){
+                bdsubmit();
+            } else {
+
+            }
+        });
+
+        $("#modeldata span a").click(function(){
+            if(vld_ml().form()){
+                mlsubmit();
+            } else {
+
+            }
+        });
+
+    </script>
+
+</body>
+<!--  /Body -->
+</html>

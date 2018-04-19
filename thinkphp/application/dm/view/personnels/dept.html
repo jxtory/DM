@@ -1,0 +1,261 @@
+﻿<!DOCTYPE html>
+<!--
+BeyondAdmin - Responsive Admin Dashboard Template build with Twitter Bootstrap 3.3.6
+Version: 1.6.0
+Purchase: https://wrapbootstrap.com/theme/beyondadmin-adminapp-angularjs-mvc-WB06R48S4
+-->
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!-- Head -->
+<head>
+    <meta charset="utf-8" />
+    <title>设备管理系统</title>
+    {include file='common/head' /}
+    <link rel="stylesheet" href="__dm__/css/validation.css">
+</head>
+<!-- /Head -->
+<!-- Body -->
+<body>
+    <!-- Navbar -->
+    {include file='common/nav' /}
+    <!-- /Navbar -->
+    <!-- Main Container -->
+    <div class="main-container container-fluid">
+        <!-- Page Container -->
+        <div class="page-container">
+            <!-- Page Sidebar -->
+            {include file='common/sidebar' /}
+            <!-- /Page Sidebar -->
+            <!-- Page Content -->
+            <div class="page-content">
+                <!-- Page Breadcrumb -->
+                <div class="page-breadcrumbs">
+                    <ul class="breadcrumb">
+                        <li>
+                            <i class="fa fa-home"></i>
+                            <a href="#">设备管理系统</a>
+                        </li>
+                        <li>人员管理</li>
+                        <li class="active">部门设置</li>
+                    </ul>
+                </div>
+                <!-- /Page Breadcrumb -->
+                <!-- Page Body -->
+                <div class="page-body">
+                    <div class="row">
+                        <div class="well">
+                            <div class="widget flat radius-bordered">
+                                <div class="widget-header bg-themeprimary">
+                                    <span class="widget-caption">部门设置（一级部门、二级部门）<span></span></span>
+                                </div>
+
+                                <div class="widget-body">
+                                    <div class="widget-main ">
+                                        <div class="tabbable">
+                                            <ul class="nav nav-tabs tabs-flat" id="myTab11">
+                                                <li class="active">
+                                                    <a data-toggle="tab" href="#dept1">
+                                                        一级部门
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a data-toggle="tab" href="#dept2">
+                                                        二级部门
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                            <div class="tab-content tabs-flat">
+                                                <div id="dept1" class="tab-pane in active">
+                                                    <form id="dept1data">
+                                                        <label for="dept1box">输入要添加的一级部门并按下回车：</label>
+                                                        <input type="text" class="form-control input-xs" id="dept1box" name="dept1box" placeholder="">
+                                                        <span class="visible-xs">
+                                                            <a class="btn btn-primary btn-xs" href="javascript:void(0);"><i class="fa fa-plus"></i> 确认</a>
+                                                        </span>
+                                                    </form>
+                                                    <hr>
+                                                    <div class="row">
+                                                        <div class="well">
+                                                            <h4 class="block">一级部门：</h4>
+                                                            <div id="dept1boxs">
+                                                                {volist name="dept1data" id="vo"}
+                                                                    <div class="btn-group" id="{$vo['dept1']}">
+                                                                        <a class="btn btn-blue tooltip-palegreen" href="javascript:void(0);"  data-toggle="tooltip" data-placement="top" data-original-title="描述：{$vo['comment']}">{$vo['dept1']}</a>
+                                                                        <a class="btn btn-blue dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);"><i class="fa fa-angle-down"></i></a>
+                                                                        <ul class="dropdown-menu dropdown-blue">
+                                                                            <li>
+                                                                                <a href="javascript:void(0);" data-level="1" data-dept="{$vo['dept1']}">编辑名称</a>
+                                                                            </li>
+                                                                            <li>
+                                                                                <a href="javascript:void(0);" data-level="1" data-dept="{$vo['dept1']}">编辑描述</a>
+                                                                            </li>
+                                                                            <li class="divider"></li>
+                                                                            <li>
+                                                                                <a href="javascript:void(0);" data-level="1" data-dept="{$vo['dept1']}">删除</a>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </div>
+                                                                {/volist}
+                                                                
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+                                                <div id="dept2" class="tab-pane">
+                                                    <form id="dept2data">
+                                                        <label for="dept2box">输入要添加的二级部门并按下回车：</label>
+                                                        <input type="text" class="form-control input-xs" id="dept2box" name="dept2box" placeholder="">
+                                                        <span class="visible-xs">
+                                                            <a class="btn btn-primary btn-xs" href="javascript:void(0);"><i class="fa fa-plus"></i> 确认</a>
+                                                        </span>
+                                                    </form>
+                                                    <hr>
+                                                    <div class="row">
+                                                        <div class="well">
+                                                            <h4 class="block">二级部门：</h4>
+                                                            <div id="dept1boxs">
+                                                                {volist name="dept2data" id="vo"}
+                                                                    <div class="btn-group" id="{$vo['dept2']}">
+                                                                        <a class="btn btn-blue tooltip-palegreen" href="javascript:void(0);"  data-toggle="tooltip" data-placement="top" data-original-title="描述：{$vo['comment']}">{$vo['dept2']}</a>
+                                                                        <a class="btn btn-blue dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);"><i class="fa fa-angle-down"></i></a>
+                                                                        <ul class="dropdown-menu dropdown-blue">
+                                                                            <li>
+                                                                                <a href="javascript:void(0);" data-level="2" data-dept="{$vo['dept2']}">编辑名称</a>
+                                                                            </li>
+                                                                            <li>
+                                                                                <a href="javascript:void(0);" data-level="2" data-dept="{$vo['dept2']}">编辑描述</a>
+                                                                            </li>
+                                                                            <li class="divider"></li>
+                                                                            <li>
+                                                                                <a href="javascript:void(0);" data-level="2" data-dept="{$vo['dept2']}">删除</a>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </div>
+                                                                {/volist}
+                                                                
+                                                            </div>
+                                                        </div>
+                                                    </div>                                                
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>     
+                        </div>
+                    </div>
+                </div>
+                <!-- /Page Body -->
+            </div>
+            <!-- /Page Content -->
+        </div>
+        <!-- /Page Container -->
+        <!-- Main Container -->
+
+    </div>
+
+    <!-- Need Scripts -->
+    {include file='common/script' /}
+    <!-- /Need Scripts -->
+    <!--Page Related Scripts-->
+    <script src="__dm__/js/dmdatas.js"></script>
+    <script src="__dm__/js/jquery-validation-1.14.0/dist/jquery.validate.js"></script>
+    <script src="__dm__/js/jquery-validation-1.14.0/dist/localization/messages_zh.js"></script>
+
+    <script type="text/javascript">
+        function validaform1(){
+            return $("#dept1data").validate({
+                rules:{
+                    dept1box: {
+                        required: true,
+                        minlength: 2,
+                        maxlength: 6
+                    }
+                },
+                messages:{
+                    dept1box: {
+                        required: "部门名称不能为空",
+                        minlength: "至少两个字",
+                        maxlength: "不得超于六个字"
+                    }
+                }
+
+            });
+        }
+        function validaform2(){
+            return $("#dept2data").validate({
+                rules:{
+                    dept2box: {
+                        required: true,
+                        minlength: 2,
+                        maxlength: 6
+                    }
+                },
+                messages:{
+                    dept2box: {
+                        required: "部门名称不能为空",
+                        minlength: "至少两个字",
+                        maxlength: "不得超于六个字"
+                    }
+                }
+
+            });
+        }
+        $(function(){
+            $.validator.setDefaults({
+               debug: true
+            });
+
+            $(validaform1());
+            $(validaform2());
+
+            if("{$Request.param.act}" == "level2"){
+                $("#myTab11 a[href='#dept2']").tab('show');
+            } else {
+                $("#myTab11 a[href='#dept1']").tab('show');
+            }
+        });
+
+        $("#dept1box").keydown(function(event) {
+            if(event.which == 13){
+                if(validaform1().form()){
+                    dept1submit();
+                } else {
+
+                }
+            }
+        });
+
+        $("#dept2box").keydown(function(event) {
+            if(event.which == 13){
+                if(validaform2().form()){
+                    dept2submit();
+                } else {
+
+                }
+            }
+        });
+
+        $("#dept1data span a").click(function(){
+            if(validaform1().form()){
+                dept1submit();
+            } else {
+
+            }
+        });
+
+        $("#dept2data span a").click(function(){
+            if(validaform2().form()){
+                dept2submit();
+            } else {
+
+            }
+        });
+
+
+    </script>
+</body>
+<!--  /Body -->
+</html>

@@ -1,0 +1,184 @@
+﻿<!DOCTYPE html>
+<!--
+BeyondAdmin - Responsive Admin Dashboard Template build with Twitter Bootstrap 3.3.6
+Version: 1.6.0
+Purchase: https://wrapbootstrap.com/theme/beyondadmin-adminapp-angularjs-mvc-WB06R48S4
+-->
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!-- Head -->
+<head>
+    <meta charset="utf-8" />
+    <title>设备管理系统</title>
+    {include file='common/head' /}
+    <link rel="stylesheet" href="__dm__/css/validation.css">
+</head>
+<!-- /Head -->
+<!-- Body -->
+<body>
+    <!-- Navbar -->
+    {include file='common/nav' /}
+    <!-- /Navbar -->
+    <!-- Main Container -->
+    <div class="main-container container-fluid">
+        <!-- Page Container -->
+        <div class="page-container">
+            <!-- Page Sidebar -->
+            {include file='common/sidebar' /}
+            <!-- /Page Sidebar -->
+            <!-- Page Content -->
+            <div class="page-content">
+                <!-- Page Breadcrumb -->
+                <div class="page-breadcrumbs">
+                    <ul class="breadcrumb">
+                        <li>
+                            <i class="fa fa-home"></i>
+                            <a href="#">设备管理系统</a>
+                        </li>
+                        <li>分配中心</li>
+                        <li>领用记录</li>
+                        <li class="active">编辑领用记录</li>
+                    </ul>
+                </div>
+                <!-- /Page Breadcrumb -->
+                <!-- Page Body -->
+                <div class="page-body">
+                    <div class="row">
+                        <div class="well">
+                            <div class="widget-header bg-themeprimary">
+                                <span class="widget-caption">编辑领用记录<span></span></span>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <form id="grantdata">
+                                    <div class="col-lg-6 col-sm-6 col-xs-12">
+                                        <h4>领用信息：<span id="hid" data-hid="{$hid}">-[HID:{$hid}]</span></h4>
+                                        <div class="form-group">
+                                            <label for="ds_pid">领用人 ID</label>
+                                            <input type="text" class="form-control" id="ds_pid" name="ds_pid" placeholder="输入领用人ID编号 (可以使用关键字查询) 如姓名、拼音" value="{$holdinfo['holder']}">
+                                            <div id="getHolderInfoDiv" style="display: none;">
+                                                <table id="getHolderInfo" class="table table-hover table-striped table-bordered table-condensed">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>
+                                                                #ID
+                                                            </th>
+                                                            <th>
+                                                                姓名
+                                                            </th>
+                                                            <th>
+                                                                性别
+                                                            </th>
+                                                            <th>
+                                                                岗位
+                                                            </th>
+                                                            <th>
+                                                                一级部门
+                                                            </th>
+                                                            <th>
+                                                                二级部门
+                                                            </th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="ds_an">固资编号</label>
+                                            <input type="text" class="form-control" id="ds_an" name="ds_an" placeholder="输入固定资产编号 (可以使用关键字查询) 如类型、品牌、型号" value="{$holdinfoan['an']}">
+                                            <div id="getDeviceInfoDiv" style="display: none;">
+                                                <table id="getDeviceInfo" class="table table-hover table-striped table-bordered table-condensed">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>
+                                                                固资编号
+                                                            </th>
+                                                            <th>
+                                                                设备类型
+                                                            </th>
+                                                            <th>
+                                                                品牌
+                                                            </th>
+                                                            <th>
+                                                                型号
+                                                            </th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <h7>
+                                                {if condition="empty($components) eq true"}
+
+                                                <span id="tipinfo" style="display: none;">
+                                                    <a href="javascript:void(0);" class="badge badge-info" data-container="body" data-titleclass="bordered-blue" data-class="" data-toggle="popover-hover" data-placement="right" data-title="提示:" data-content="可以在[设备管理]——>[配件设置]中添加配件!" data-original-title="" title="">
+                                                        ?
+                                                    </a>
+                                                </span>
+                                                {else /}
+                                                配件
+                                                {/if}
+                                            </h7>
+                                            <div class="row">
+                                                {volist name="components" id="data"}
+                                                <div class="col-lg-4 col-sm-4 col-xs-4">
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox" name="ds_component" value="{$data['component']}" class="colored-success">
+                                                            <span class="text">{$data['component']}</span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                {/volist}
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="ds_time">领取日期</label>
+                                            <input type="text" class="form-control" id="ds_time" name="ds_time" data-date="" data-date-format="yyyy-mm-dd" data-link-format="yyyy-mm-dd">
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-lg-12 col-sm-12 col-xs-12">
+                                    <div class="buttons-preview" id="editdevicedata_submit">
+                                        <a href="javascript:void(0);" class="btn btn-success">确认修改</a>
+                                        <a href="javascript:void(0);" class="btn btn-danger">放弃修改</a>
+                                        <a href="javascript:void(0);" class="btn btn-danger" data-hid="{$hid}">删除设备</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /Page Body -->
+            </div>
+            <!-- /Page Content -->
+        </div>
+        <!-- /Page Container -->
+        <!-- Main Container -->
+
+    </div>
+
+    <!-- Need Scripts -->
+    {include file='common/script' /}
+    <!-- /Need Scripts -->
+    <!--Page Related Scripts-->
+    <script src="__dm__/js/dmdatas.js"></script>
+    <script src="__dm__/js/jquery-validation-1.14.0/dist/jquery.validate.js"></script>
+    <script src="__dm__/js/jquery-validation-1.14.0/dist/localization/messages_zh.js"></script>
+
+    <script type="text/javascript">
+
+    </script>
+</body>
+<!--  /Body -->
+</html>

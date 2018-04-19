@@ -1,0 +1,120 @@
+﻿<!DOCTYPE html>
+<!--
+BeyondAdmin - Responsive Admin Dashboard Template build with Twitter Bootstrap 3.3.6
+Version: 1.6.0
+Purchase: https://wrapbootstrap.com/theme/beyondadmin-adminapp-angularjs-mvc-WB06R48S4
+-->
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!-- Head -->
+<head>
+    <meta charset="utf-8" />
+    <title>设备管理系统</title>
+    {include file='common/head' /}
+</head>
+<!-- /Head -->
+<!-- Body -->
+<body>
+    <!-- Navbar -->
+    {include file='common/nav' /}
+    <!-- /Navbar -->
+    <!-- Main Container -->
+    <div class="main-container container-fluid">
+        <!-- Page Container -->
+        <div class="page-container">
+            <!-- Page Sidebar -->
+            {include file='common/sidebar' /}
+            <!-- /Page Sidebar -->
+            <!-- Page Content -->
+            <div class="page-content">
+                <!-- Page Breadcrumb -->
+                <div class="page-breadcrumbs">
+                    <ul class="breadcrumb">
+                        <li>
+                            <i class="fa fa-home"></i>
+                            <a href="#">设备管理系统</a>
+                        </li>
+                        <li>分配中心</li>
+                        <li class="active">库存设备</li>
+                    </ul>
+                </div>
+                <!-- /Page Breadcrumb -->
+                <!-- Page Body -->
+                <div class="page-body">
+                    <div class="row">
+                        <div class="well">
+                            <div class="widget flat radius-bordered">
+                                <div class="widget-header bg-themeprimary">
+                                    <span class="widget-caption">库存设备<span></span></span>
+                                </div>
+
+                                <table id="warehousedevices" class="table table-hover table-striped table-bordered table-condensed">
+                                    <thead>
+                                        <tr>
+                                            <th>
+                                                #ID
+                                            </th>
+                                            <th>
+                                                固资编号(An)
+                                            </th>
+                                            <th>
+                                                设备类型(Type)
+                                            </th>
+                                            <th>
+                                                品牌(Brand)
+                                            </th>
+                                            <th>
+                                                型号(Model)
+                                            </th>
+                                            <th>
+                                                序列号(SN)
+                                            </th>
+                                            <th>
+                                                硬件鉴定（屏幕、外观、组件）(Comment)
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {volist name='datas' id="data"}
+                                        <tr>
+                                            <td>{$data['id']}</td>
+                                            <td>{$data['an']}</td>
+                                            <td>{$data['type']}</td>
+                                            <td>{$data['brand']}</td>
+                                            <td>{$data['model']}</td>
+                                            <td>{$data['sn']}</td>
+                                            <td>{$data['comment']}</td>
+                                        </tr>
+                                        {/volist}
+                                    </tbody>
+                                </table>
+
+                                {$datas->render()}
+                                <div class="footer">
+                                    <code>&nbsp;&nbsp;From IT Support&nbsp;&nbsp;</code>
+                                </div>
+
+                            </div>     
+                        </div>
+                    </div>
+                </div>
+                <!-- /Page Body -->
+            </div>
+            <!-- /Page Content -->
+        </div>
+        <!-- /Page Container -->
+        <!-- Main Container -->
+
+    </div>
+
+    <!-- Need Scripts -->
+    {include file='common/script' /}
+    <!-- /Need Scripts -->
+    <!--Page Related Scripts-->
+    <script src="__dm__/js/dmdatas.js"></script>
+
+    <script type="text/javascript">
+    </script>
+</body>
+<!--  /Body -->
+</html>

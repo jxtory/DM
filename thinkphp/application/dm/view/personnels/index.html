@@ -1,0 +1,142 @@
+﻿<!DOCTYPE html>
+<!--
+BeyondAdmin - Responsive Admin Dashboard Template build with Twitter Bootstrap 3.3.6
+Version: 1.6.0
+Purchase: https://wrapbootstrap.com/theme/beyondadmin-adminapp-angularjs-mvc-WB06R48S4
+-->
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!-- Head -->
+<head>
+    <meta charset="utf-8" />
+    <title>设备管理系统</title>
+    {include file='common/head' /}
+</head>
+<!-- /Head -->
+<!-- Body -->
+<body>
+    <!-- Navbar -->
+    {include file='common/nav' /}
+    <!-- /Navbar -->
+    <!-- Main Container -->
+    <div class="main-container container-fluid">
+        <!-- Page Container -->
+        <div class="page-container">
+            <!-- Page Sidebar -->
+            {include file='common/sidebar' /}
+            <!-- /Page Sidebar -->
+            <!-- Page Content -->
+            <div class="page-content">
+                <!-- Page Breadcrumb -->
+                <div class="page-breadcrumbs">
+                    <ul class="breadcrumb">
+                        <li>
+                            <i class="fa fa-home"></i>
+                            <a href="#">设备管理系统</a>
+                        </li>
+                        <li>人员管理</li>
+                        <li class="active">查看人员</li>
+                    </ul>
+                </div>
+                <!-- /Page Breadcrumb -->
+                <!-- Page Body -->
+                <div class="page-body">
+                    <div class="row">
+                        <div class="well">
+                            <div class="widget flat radius-bordered">
+                                <div class="widget-header bg-themeprimary">
+                                    <span class="widget-caption">查看人员<span></span></span>
+                                </div>
+
+                                <table id="lookpersonnels" class="table table-hover table-striped table-bordered table-condensed">
+                                    <thead>
+                                        <tr>
+                                            <th>
+                                                #ID<span class="visible-xs red">点击编辑</span>
+                                            </th>
+                                            <th>
+                                                人员姓名(personnel)
+                                            </th>
+                                            <th>
+                                                姓名全拼(phoneticize)
+                                            </th>
+                                            <th>
+                                                性别(sex)
+                                            </th>
+                                            <th>
+                                                岗位(position)
+                                            </th>
+                                            <th>
+                                                一级部门(dept1)
+                                            </th>
+                                            <th>
+                                                二级部门(dept2)
+                                            </th>
+                                            <th>
+                                                直属上级(leader)
+                                            </th>
+                                            <th>
+                                                人员状态(status)
+                                            </th>
+                                            <th>
+                                                入职时间(time)
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {volist name='datas' id="data"}
+                                        <tr>
+                                            <td>{$data['id']}</td>
+                                            <td>{$data['personnel']}</td>
+                                            <td>{$data['phoneticize']}</td>
+                                            <td>{$data['sex']}</td>
+                                            <td>{$data['position']}</td>
+                                            <td>{$data['dept1']}</td>
+                                            <td>{$data['dept2']}</td>
+                                            <td>{$data['leader']}</td>
+                                            <td>{php}
+                                                    if($data['status'] == 0){
+                                                        echo "在职";
+                                                    } else if($data['status'] == 1) {
+                                                        echo "离职";
+                                                    }
+                                                {/php}
+                                            </td>
+                                            <td>{$data['time']}</td>
+                                        </tr>
+                                        {/volist}
+                                    </tbody>
+                                </table>
+
+                                {$datas->render()}
+                                <div class="footer">
+                                    <code>&nbsp;&nbsp;From IT Support&nbsp;&nbsp;</code>
+                                </div>
+
+
+                            </div>     
+                        </div>
+                    </div>
+
+                </div>
+                <!-- /Page Body -->
+            </div>
+            <!-- /Page Content -->
+        </div>
+        <!-- /Page Container -->
+        <!-- Main Container -->
+
+    </div>
+
+    <!-- Need Scripts -->
+    {include file='common/script' /}
+    <!-- /Need Scripts -->
+    <!--Page Related Scripts-->
+    <script src="__dm__/js/dmdatas.js"></script>
+
+    <script type="text/javascript">
+
+    </script>
+</body>
+<!--  /Body -->
+</html>

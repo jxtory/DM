@@ -1,0 +1,197 @@
+﻿<!DOCTYPE html>
+<!--
+BeyondAdmin - Responsive Admin Dashboard Template build with Twitter Bootstrap 3.3.6
+Version: 1.6.0
+Purchase: https://wrapbootstrap.com/theme/beyondadmin-adminapp-angularjs-mvc-WB06R48S4
+-->
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!-- Head -->
+<head>
+    <meta charset="utf-8" />
+    <title>设备管理系统</title>
+    {include file='common/head' /}
+    <link rel="stylesheet" href="__dm__/css/validation.css">
+</head>
+<!-- /Head -->
+<!-- Body -->
+<body>
+    <!-- Navbar -->
+    {include file='common/nav' /}
+    <!-- /Navbar -->
+    <!-- Main Container -->
+    <div class="main-container container-fluid">
+        <!-- Page Container -->
+        <div class="page-container">
+            <!-- Page Sidebar -->
+            {include file='common/sidebar' /}
+            <!-- /Page Sidebar -->
+            <!-- Page Content -->
+            <div class="page-content">
+                <!-- Page Breadcrumb -->
+                <div class="page-breadcrumbs">
+                    <ul class="breadcrumb">
+                        <li>
+                            <i class="fa fa-home"></i>
+                            <a href="#">设备管理系统</a>
+                        </li>
+                        <li>设备管理</li>
+                        <li class="active">添加设备</li>
+                    </ul>
+                </div>
+                <!-- /Page Breadcrumb -->
+                <!-- Page Body -->
+                <div class="page-body">
+                    <div class="row">
+                        <div class="well">
+                            <div class="widget-header bg-themeprimary">
+                                <span class="widget-caption">添加设备<span></span></span>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <form id="devicedata">
+                                    <div class="col-lg-6 col-sm-6 col-xs-12">
+                                        <h4>设备信息设置：</h4>
+                                        <div class="form-group">
+                                            <label for="ds_an">固资编号</label>
+                                            <input type="text" class="form-control" id="ds_an" name="ds_an" placeholder="输入固定资产编号">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="ds_type">设备类型</label>
+                                            <select id="ds_type" name="ds_type" style="width:100%;">
+                                                {volist name="types" id="ts"}
+                                                    <option value="{$ts.devicetype}">{$ts.devicetype}</option>
+                                                {/volist}
+                                            </select>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="ds_brand">品牌</label>
+                                            <select id="ds_brand" name="ds_brand" style="width:100%;">
+                                                <option value="无">无</option>
+                                                {volist name="brands" id="ts"}
+                                                    <option value="{$ts.brand}">{$ts.brand}</option>
+                                                {/volist}
+                                            </select>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="ds_model">型号</label>
+                                            <select id="ds_model" name="ds_model" style="width:100%;">
+                                                <option value="无">无</option>
+                                                {volist name="models" id="ts"}
+                                                    <option value="{$ts.model}">{$ts.model}</option>
+                                                {/volist}
+                                            </select>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="ds_sn">序列号SN</label>
+                                            <input type="text" class="form-control" id="ds_sn" name="ds_sn" placeholder="输入设备序列号">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="ds_comment">硬件鉴定（屏幕、外观、组件）<span id="saywords"></span></label>
+                                            <span class="input-icon icon-right">
+                                                <textarea class="form-control" rows="10" placeholder="正常" id="ds_comment" name="ds_comment"></textarea>
+                                                <i class="glyphicon glyphicon glyphicon-pencil green"></i>
+                                            </span>
+                                        </div>
+
+                                    </div>
+                                </form>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-lg-3 col-sm-3 col-xs-3">
+                                    <div class="buttons-preview" id="devicedata_submit">
+                                        <a href="javascript:void(0);" class="btn btn-success">确认添加</a>
+                                        <a href="javascript:void(0);" class="btn btn-danger">重置</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /Page Body -->
+            </div>
+            <!-- /Page Content -->
+        </div>
+        <!-- /Page Container -->
+        <!-- Main Container -->
+
+    </div>
+
+    <!-- Need Scripts -->
+    {include file='common/script' /}
+    <!-- /Need Scripts -->
+    <!--Page Related Scripts-->
+    <script src="__dm__/js/dmdatas.js"></script>
+    <script src="__dm__/js/jquery-validation-1.14.0/dist/jquery.validate.js"></script>
+    <script src="__dm__/js/jquery-validation-1.14.0/dist/localization/messages_zh.js"></script>
+
+    <script type="text/javascript">
+        function validaform(){
+            return $("#devicedata").validate({
+                rules:{
+                    ds_an: {
+                        required: true,
+                        minlength: 5,
+                        remote: {
+                            url: 'repeatcheck.html',
+                            type: "post",
+                            data: {
+                                ds_an: function(){
+                                    return $("#ds_an").val();
+                                }
+                            }
+                        }
+                    },
+                    ds_comment: {
+                        maxlength: 100
+                    }
+                },
+                messages:{
+                    ds_an: {
+                        required: "固资编号不能为空",
+                        minlength: "固资编号应大于5位",
+                        remote: "固资编号已存在!"
+                    },
+                    ds_comment: {
+                        maxlength: "硬件鉴定，填写不要超过100个字",
+                    }
+                }
+
+            });
+        }
+        $(function(){
+            $.validator.setDefaults({
+               debug: true
+            });
+
+            $(validaform());
+
+            $("#ds_comment").on('keyup', function(){
+                $("#saywords").text("当前字数：" + $("#ds_comment").val().length);
+            });
+
+        });
+
+        $("#devicedata_submit a:first").on("click",function(event){
+            if(validaform().form()){
+                devicedatasubmit();
+                //防止重复提交
+                $("#devicedata").find("input").val("");
+                $(this).remove();
+            } else {
+
+            }
+            event.preventDefault();
+
+        });
+
+    </script>
+</body>
+<!--  /Body -->
+</html>

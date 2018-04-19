@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<!--
+BeyondAdmin - Responsive Admin Dashboard Template build with Twitter Bootstrap 3.3.6
+Version: 1.6.0
+Purchase: https://wrapbootstrap.com/theme/beyondadmin-adminapp-angularjs-mvc-WB06R48S4
+-->
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!-- Head -->
+<head>
+    <meta charset="utf-8" />
+    <title>设备管理系统</title>
+    {include file='common/head' /}
+</head>
+<!-- /Head -->
+<!-- Body -->
+<body>
+    <!-- Navbar -->
+    {include file='common/nav' /}
+    <!-- /Navbar -->
+    <!-- Main Container -->
+    <div class="main-container container-fluid">
+        <!-- Page Container -->
+        <div class="page-container">
+            <!-- Page Sidebar -->
+            {include file='common/sidebar' /}
+            <!-- /Page Sidebar -->
+            <!-- Page Content -->
+            <div class="page-content">
+                <!-- Page Breadcrumb -->
+                <div class="page-breadcrumbs">
+                    <ul class="breadcrumb">
+                        <li>
+                            <i class="fa fa-home"></i>
+                            <a href="#">设备管理系统</a>
+                        </li>
+                        <li>系统设置</li>
+                        <li class="active">库表管理</li>
+                    </ul>
+                </div>
+                <!-- /Page Breadcrumb -->
+                <!-- Page Body -->
+                <div class="page-body">
+                    <div class="row">
+                        <div class="well">
+                            <div class="widget flat radius-bordered">
+                                <div class="widget-header bg-themeprimary">
+                                    <span class="widget-caption">库表管理——谨慎操作<span></span></span>
+                                </div>
+
+                                <div class="widget-body">
+                                    <div class="widget-main ">
+                                        <div class="tabbable">
+                                            <ul class="nav nav-tabs tabs-flat" id="myTab11">
+                                                <li>
+                                                    <a data-toggle="tab" href="#allcmd">
+                                                        <i class="glyphicon glyphicon-asterisk"></i>
+                                                        清空全部数据
+                                                    </a>
+                                                </li>
+                                                <li class="active">
+                                                    <a data-toggle="tab" href="#deptcmd">
+                                                        <i class="glyphicon glyphicon-asterisk"></i>
+                                                        清空部门设置
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a data-toggle="tab" href="#personnelscmd">
+                                                        <i class="glyphicon glyphicon-asterisk"></i>
+                                                        清空人员表
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a data-toggle="tab" href="#devicetypecmd">
+                                                        <i class="glyphicon glyphicon-asterisk"></i>
+                                                        清空设备类型表
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a data-toggle="tab" href="#brandcmd">
+                                                        <i class="glyphicon glyphicon-asterisk"></i>
+                                                        清空设备品牌表
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a data-toggle="tab" href="#modelcmd">
+                                                        <i class="glyphicon glyphicon-asterisk"></i>
+                                                        清空设备型号表
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a data-toggle="tab" href="#devicescmd">
+                                                        <i class="glyphicon glyphicon-asterisk"></i>
+                                                        清空设备表
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a data-toggle="tab" href="#holderscmd">
+                                                        <i class="glyphicon glyphicon-asterisk"></i>
+                                                        清空领用表
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a data-toggle="tab" href="#componentscmd">
+                                                        <i class="glyphicon glyphicon-asterisk"></i>
+                                                        清空配件表
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                            <div class="tab-content tabs-flat">                                        
+                                                <div id="allcmd" class="tab-pane">
+                                                    <div class="row">
+                                                        <div class="alert alert-warning fade in col-xs-12">
+                                                            <button class="close" data-dismiss="alert">
+                                                                ×
+                                                            </button>
+                                                            <i class="fa-fw fa fa-warning"></i>
+                                                            <strong>严重警告!</strong> 如无企业授权！您将承担法律责任。
+                                                            <p>
+                                                                <strong>严重警告!</strong> “本管理系统[全部数据]将被清空”，请谨慎操作。
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                    <a href="javascript:void(0);" class="btn btn-warning shiny" id="tcall">清空全部数据</a>
+                                                    
+                                                </div>
+                                                <div id="deptcmd" class="tab-pane in active">
+                                                    <div class="row">
+                                                        <div class="alert alert-warning fade in col-xs-12">
+                                                            <button class="close" data-dismiss="alert">
+                                                                ×
+                                                            </button>
+                                                            <i class="fa-fw fa fa-warning"></i>
+                                                            <strong>警告</strong> 此操作将清空[部门配置]，请谨慎操作。
+                                                        </div>
+                                                    </div>
+
+                                                    <a href="javascript:void(0);" class="btn btn-warning shiny" id="tcdept1">一级部门</a>
+                                                    <a href="javascript:void(0);" class="btn btn-warning shiny" id="tcdept2">二级部门</a>
+                                                </div>
+                                                <div id="personnelscmd" class="tab-pane">
+                                                    <div class="row">
+                                                        <div class="alert alert-warning fade in col-xs-12">
+                                                            <button class="close" data-dismiss="alert">
+                                                                ×
+                                                            </button>
+                                                            <i class="fa-fw fa fa-warning"></i>
+                                                            <strong>警告</strong> 此操作将清空[人员表]，请谨慎操作。
+                                                        </div>
+                                                    </div>
+                                                    <a href="javascript:void(0);" class="btn btn-warning shiny" id="tcpersonnels">人员表</a>
+                                                    
+                                                </div>
+                                                <div id="devicetypecmd" class="tab-pane">
+                                                    <div class="row">
+                                                        <div class="alert alert-warning fade in col-xs-12">
+                                                            <button class="close" data-dismiss="alert">
+                                                                ×
+                                                            </button>
+                                                            <i class="fa-fw fa fa-warning"></i>
+                                                            <strong>警告</strong> 此操作将清空[设备类型表]，请谨慎操作。
+                                                        </div>
+                                                    </div>
+                                                    <a href="javascript:void(0);" class="btn btn-warning shiny" id="tcdevicetype">设备类型表</a>
+                                                    
+                                                </div>
+                                                <div id="brandcmd" class="tab-pane">
+                                                    <div class="row">
+                                                        <div class="alert alert-warning fade in col-xs-12">
+                                                            <button class="close" data-dismiss="alert">
+                                                                ×
+                                                            </button>
+                                                            <i class="fa-fw fa fa-warning"></i>
+                                                            <strong>警告</strong> 此操作将清空[设备品牌表]，请谨慎操作。
+                                                        </div>
+                                                    </div>
+                                                    <a href="javascript:void(0);" class="btn btn-warning shiny" id="tcbrand">设备品牌表</a>
+                                                    
+                                                </div>
+                                                <div id="modelcmd" class="tab-pane">
+                                                    <div class="row">
+                                                        <div class="alert alert-warning fade in col-xs-12">
+                                                            <button class="close" data-dismiss="alert">
+                                                                ×
+                                                            </button>
+                                                            <i class="fa-fw fa fa-warning"></i>
+                                                            <strong>警告</strong> 此操作将清空[设备型号表]，请谨慎操作。
+                                                        </div>
+                                                    </div>
+                                                    <a href="javascript:void(0);" class="btn btn-warning shiny" id="tcmodel">设备型号表</a>
+                                                    
+                                                </div>
+                                                <div id="devicescmd" class="tab-pane">
+                                                    <div class="row">
+                                                        <div class="alert alert-warning fade in col-xs-12">
+                                                            <button class="close" data-dismiss="alert">
+                                                                ×
+                                                            </button>
+                                                            <i class="fa-fw fa fa-warning"></i>
+                                                            <strong>警告</strong> 此操作将清空[设备表]，请谨慎操作。
+                                                        </div>
+                                                    </div>
+                                                    <a href="javascript:void(0);" class="btn btn-warning shiny" id="tcdevices">设备表</a>
+                                                    
+                                                </div>
+                                                <div id="holderscmd" class="tab-pane">
+                                                    <div class="row">
+                                                        <div class="alert alert-warning fade in col-xs-12">
+                                                            <button class="close" data-dismiss="alert">
+                                                                ×
+                                                            </button>
+                                                            <i class="fa-fw fa fa-warning"></i>
+                                                            <strong>警告</strong> 此操作将清空[领用表]，请谨慎操作。
+                                                        </div>
+                                                    </div>
+                                                    <a href="javascript:void(0);" class="btn btn-warning shiny" id="tcholders">领用表</a>
+                                                    
+                                                </div>
+                                                <div id="componentscmd" class="tab-pane">
+                                                    <div class="row">
+                                                        <div class="alert alert-warning fade in col-xs-12">
+                                                            <button class="close" data-dismiss="alert">
+                                                                ×
+                                                            </button>
+                                                            <i class="fa-fw fa fa-warning"></i>
+                                                            <strong>警告</strong> 此操作将清空[配件表]，请谨慎操作。
+                                                        </div>
+                                                    </div>
+                                                    <a href="javascript:void(0);" class="btn btn-warning shiny" id="tccomponents">配件表</a>
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>     
+                        </div>
+                    </div>
+                </div>
+                <!-- /Page Body -->
+            </div>
+            <!-- /Page Content -->
+        </div>
+        <!-- /Page Container -->
+        <!-- Main Container -->
+
+    </div>
+
+    <!-- Need Scripts -->
+    {include file='common/script' /}
+    <!-- /Need Scripts -->
+    <!--Page Related Scripts-->
+    <script src="__dm__/js/dmdatas.js"></script>
+
+    <script type="text/javascript">
+
+    </script>
+</body>
+<!--  /Body -->
+</html>

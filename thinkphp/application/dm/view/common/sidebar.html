@@ -1,0 +1,153 @@
+            <div class="page-sidebar" id="sidebar">
+                <!-- Sidebar Menu -->
+                <ul class="nav sidebar-menu">
+                    <!--首页-->
+                    <li>
+                        <a href="{:url('index/index')}">
+                            <i class="menu-icon glyphicon glyphicon-th blue"></i>
+                            <span class="menu-text"> 系统首页 </span>
+                        </a>
+                    </li>
+                    <!--快速窗口-->
+                    <li>
+                        <a href="{:url('index/window')}">
+                            <i class="menu-icon glyphicon glyphicon-flash blue"></i>
+                            <span class="menu-text"> 快速窗口 </span>
+                        </a>
+                    </li>
+                    <!--数据概览-->
+                    <li>
+                        <a href="{:url('datacenter/index')}">
+                            <i class="menu-icon glyphicon glyphicon-list-alt blue"></i>
+                            <span class="menu-text"> 数据概览 </span>
+                        </a>
+                    </li>
+                    <!--分配中心-->
+                    <li>
+                        <a href="#" class="menu-dropdown">
+                            <i class="menu-icon glyphicon glyphicon-refresh blue"></i>
+                            <span class="menu-text"> 分配中心 </span>
+                            <i class="menu-expand"></i>
+                        </a>
+
+                        <ul class="submenu">
+                            <li>
+                                <a href="{:url('allocation/grant')}">
+                                    <span class="menu-text"> 设备发放 </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{:url('allocation/storage')}">
+                                    <span class="menu-text"> 设备回收 </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{:url('allocation/holders')}">
+                                    <span class="menu-text"> 领用记录 </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{:url('allocation/warehouse')}">
+                                    <span class="menu-text"> 库存设备 </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{:url('allocation/history')}">
+                                    <span class="menu-text"> 历史记录 </span>
+                                </a>
+                            </li>
+
+                        </ul>
+                    </li>
+                    <!--设备管理-->
+                    <li>
+                        <a href="#" class="menu-dropdown">
+                            <i class="menu-icon glyphicon glyphicon-hdd blue"></i>
+                            <span class="menu-text"> 设备管理 </span>
+                            <i class="menu-expand"></i>
+                        </a>
+
+                        <ul class="submenu">
+                            <li>
+                                <a href="{:url('device/add_device')}">
+                                    <span class="menu-text"> 添加设备 </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{:url('device/index')}">
+                                    <span class="menu-text"> 查看设备 </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{:url('device/content')}">
+                                    <span class="menu-text"> 内容设置 </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{:url('device/component')}">
+                                    <span class="menu-text"> 配件设置 </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!--人员管理-->
+                    <li>
+                        <a href="#" class="menu-dropdown">
+                            <i class="menu-icon glyphicon glyphicon-user blue"></i>
+                            <span class="menu-text"> 人员管理 </span>
+                            <i class="menu-expand"></i>
+                        </a>
+
+                        <ul class="submenu">
+                            <li>
+                                <a href="{:url('personnels/addpersonnel')}">
+                                    <span class="menu-text"> 添加人员 </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{:url('personnels/index')}">
+                                    <span class="menu-text"> 查看人员 </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{:url('personnels/dept')}">
+                                    <span class="menu-text"> 部门设置 </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- 系统设置 -->
+                    <li>
+                        <a href="#" class="menu-dropdown">
+                            <i class="menu-icon glyphicon glyphicon-wrench blue"></i>
+                            <span class="menu-text"> 系统设置 </span>
+
+                            <i class="menu-expand"></i>
+                        </a>
+
+                        <ul class="submenu">
+                            <li>
+                                <a href="{:url('sys/index')}">
+                                    <span class="menu-text"> 管理中心 </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{:url('sys/user')}">
+                                    <span class="menu-text"> 用户管理 </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{:url('sys/datas')}">
+                                    <span class="menu-text"> 库表管理 </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{:request()->domain()}/phpmyadmin/" target="_blank">
+                                    <span class="menu-text"> PhpMyAdmin </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <!-- /Sidebar Menu -->
+            </div>

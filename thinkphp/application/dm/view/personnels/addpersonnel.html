@@ -1,0 +1,233 @@
+﻿<!DOCTYPE html>
+<!--
+BeyondAdmin - Responsive Admin Dashboard Template build with Twitter Bootstrap 3.3.6
+Version: 1.6.0
+Purchase: https://wrapbootstrap.com/theme/beyondadmin-adminapp-angularjs-mvc-WB06R48S4
+-->
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!-- Head -->
+<head>
+    <meta charset="utf-8" />
+    <title>设备管理系统</title>
+    {include file='common/head' /}
+    <link rel="stylesheet" href="__dm__/css/bootstrap-datetimepicker.min.css">
+    <link rel="stylesheet" href="__dm__/css/validation.css">
+</head>
+<!-- /Head -->
+<!-- Body -->
+<body>
+    <!-- Navbar -->
+    {include file='common/nav' /}
+    <!-- /Navbar -->
+    <!-- Main Container -->
+    <div class="main-container container-fluid">
+        <!-- Page Container -->
+        <div class="page-container">
+            <!-- Page Sidebar -->
+            {include file='common/sidebar' /}
+            <!-- /Page Sidebar -->
+            <!-- Page Content -->
+            <div class="page-content">
+                <!-- Page Breadcrumb -->
+                <div class="page-breadcrumbs">
+                    <ul class="breadcrumb">
+                        <li>
+                            <i class="fa fa-home"></i>
+                            <a href="#">设备管理系统</a>
+                        </li>
+                        <li>人员管理</li>
+                        <li class="active">添加人员</li>
+                    </ul>
+                </div>
+                <!-- /Page Breadcrumb -->
+                <!-- Page Body -->
+                <div class="page-body">
+                    <div class="row">
+                        <div class="well">
+                            <div class="widget-header bg-themeprimary">
+                                <span class="widget-caption">新增加人员<span></span></span>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <form id="personneldata">
+                                    <fieldset>
+                                    <div class="col-lg-4 col-sm-4 col-xs-4">
+                                        <h4>个人信息设置：</h4>
+                                        <div class="form-group">
+                                            <label for="personnel">人员姓名</label>
+                                            <input type="text" class="form-control" id="personnel" name="personnel" placeholder="输入姓名">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="phoneticize">姓名全拼</label>
+                                            <input type="text" class="form-control" id="phoneticize" name="phoneticize" placeholder="输入姓名全拼音">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="sex">性别</label>
+                                            <select id="sex" name="sex" style="width:100%;">
+                                                <option value="男" selected />男
+                                                <option value="女" />女
+                                            </select>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="col-lg-4 col-sm-4 col-xs-4">
+                                        <h4>部门信息设置：</h4>
+                                        <div class="form-group">
+                                            <label for="dept1">一级部门</label>
+                                            <select id="dept1" name="dept1" style="width:100%;">
+                                                <option value="无">无</option>
+                                                {volist name="dept1box" id="dt1b"}
+                                                    <option value="{$dt1b.dept1}">{$dt1b.dept1}</option>
+                                                {/volist}
+                                            </select>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="dept2">二级部门</label>
+                                            <select id="dept2" name="dept2" style="width:100%;">
+                                                <option value="无">无</option>
+                                                {volist name="dept2box" id="dt2b"}
+                                                    <option value="{$dt2b.dept2}">{$dt2b.dept2}</option>
+                                                {/volist}
+                                            </select>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="leader">直属上级</label>
+                                            <input type="text" class="form-control" id="leader" name="leader" placeholder="输入该人员上级的姓名">
+                                        </div>
+
+                                    </div>
+
+                                    <div class="col-lg-4 col-sm-4 col-xs-4">
+                                        <h4>工作信息设置：</h4>
+                                        <div class="form-group">
+                                            <label for="position">岗位名称</label>
+                                            <input type="text" class="form-control" id="position" name="position" placeholder="填写该人员工作岗位">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="statusdm">岗位状态</label>
+                                            <select id="statusdm" name="statusdm" style="width:100%;">
+                                                <option value="在职" selected />在职
+                                                <option value="离职" />离职
+                                            </select>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="timedm">入职时间</label>
+                                            <input type="text" class="form-control" id="timedm" name="timedm" data-date="" data-date-format="yyyy-mm-dd" data-link-format="yyyy-mm-dd">
+                                        </div>
+                                    </div>                                
+                                    </fieldset>
+                                </form>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-lg-3 col-sm-3 col-xs-3">
+                                    <div class="buttons-preview" id="personnel_submit">
+                                        <a href="javascript:void(0);" class="btn btn-success">确认新增</a>
+                                        <a href="javascript:void(0);" class="btn btn-danger">重置</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /Page Body -->
+            </div>
+            <!-- /Page Content -->
+        </div>
+        <!-- /Page Container -->
+        <!-- Main Container -->
+
+    </div>
+
+    <!-- Need Scripts -->
+    {include file='common/script' /}
+    <!-- /Need Scripts -->
+    <!--Page Related Scripts-->
+    <script src="__dm__/js/dmdatas.js"></script>
+    <script src="__dm__/js/bsdtp/bootstrap-datetimepicker.js"></script>
+    <script src="__dm__/js/bsdtp/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+    <script src="__dm__/js/jquery-validation-1.14.0/dist/jquery.validate.js"></script>
+    <script src="__dm__/js/jquery-validation-1.14.0/dist/localization/messages_zh.js"></script>
+
+    <script type="text/javascript">
+        $('#timedm').datetimepicker({
+            language:  'zh-CN',
+            weekStart: 1,
+            todayBtn:  1,
+            autoclose: 1,
+            todayHighlight: 1,
+            startView: 2,
+            minView: 2,
+            forceParse: 0
+        });       
+
+        function validaform(){
+            return $("#personneldata").validate({
+                rules:{
+                    personnel: {
+                        required: true,
+                        minlength: 2
+                    },
+                    timedm: {
+                        required: true,
+                        dateISO: true
+                    },
+                    position: {
+                        required: true,
+                    }
+                },
+                messages:{
+                    personnel: {
+                        required: "名字不能为空",
+                        minlength: "至少两个字"
+                    },
+                    timedm: {
+                        required: '日期不能为空',
+                        dateISO: "日期格式不正确"
+                    },
+                    position: {
+                        required: '岗位不能为空'
+                    }
+                }
+
+            });
+        }
+        $(function(){
+            setInterval(function(){
+                var e = jQuery.Event("keyup");//模拟一个键盘事件
+                e.keyCode =13;//keyCode=13是回车
+                $("#timedm").trigger(e);                
+            }, 1000);
+            $.validator.setDefaults({
+               debug: true
+            });
+
+            $(validaform());
+
+        });
+
+        $("#personnel_submit a:first").on("click",function(event){
+            if(validaform().form()){
+                personnelsubmit();
+
+                //防止重复提交
+                $("#personneldata").find("input").val("");
+                $(this).remove();
+            } else {
+
+            }
+
+        });
+
+    </script>
+</body>
+<!--  /Body -->
+</html>
