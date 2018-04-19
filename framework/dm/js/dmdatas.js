@@ -867,7 +867,7 @@
             );
         });
 
-        //修改人员
+        //修改设备
         function editdevicedatasubmit(){
             var datas = {};
             datas.types = "editDevice";
@@ -901,12 +901,12 @@
             }); 
         }
 
-        //放弃人员修改
+        //放弃设备修改
         $("#editdevicedata_submit a:eq(1)").on("click",function(){
             window.location.reload();
         });
 
-        //删除人员
+        //删除设备
         $("#editdevicedata_submit a:eq(2)").on("click",function(){
             bootbox.setDefaults("locale", "zh_CN");
             var lookdevice = $(this).data('did');

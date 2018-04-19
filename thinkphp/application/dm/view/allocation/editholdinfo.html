@@ -11,6 +11,7 @@ Purchase: https://wrapbootstrap.com/theme/beyondadmin-adminapp-angularjs-mvc-WB0
     <meta charset="utf-8" />
     <title>设备管理系统</title>
     {include file='common/head' /}
+    <link rel="stylesheet" href="__dm__/css/bootstrap-datetimepicker.min.css">
     <link rel="stylesheet" href="__dm__/css/validation.css">
 </head>
 <!-- /Head -->
@@ -50,7 +51,7 @@ Purchase: https://wrapbootstrap.com/theme/beyondadmin-adminapp-angularjs-mvc-WB0
                             </div>
                             <hr>
                             <div class="row">
-                                <form id="grantdata">
+                                <form id="editgrantdata">
                                     <div class="col-lg-6 col-sm-6 col-xs-12">
                                         <h4>领用信息：<span id="hid" data-hid="{$hid}">-[HID:{$hid}]</span></h4>
                                         <div class="form-group">
@@ -141,7 +142,7 @@ Purchase: https://wrapbootstrap.com/theme/beyondadmin-adminapp-angularjs-mvc-WB0
                                         </div>
                                         <div class="form-group">
                                             <label for="ds_time">领取日期</label>
-                                            <input type="text" class="form-control" id="ds_time" name="ds_time" data-date="" data-date-format="yyyy-mm-dd" data-link-format="yyyy-mm-dd">
+                                            <input type="text" class="form-control" id="ds_time" name="ds_time" data-date="" data-date-format="yyyy-mm-dd" data-link-format="yyyy-mm-dd" value="{$holdinfo['grant_date']}">
                                         </div>
                                     </div>
                                 </form>
@@ -149,7 +150,7 @@ Purchase: https://wrapbootstrap.com/theme/beyondadmin-adminapp-angularjs-mvc-WB0
                             <hr>
                             <div class="row">
                                 <div class="col-lg-12 col-sm-12 col-xs-12">
-                                    <div class="buttons-preview" id="editdevicedata_submit">
+                                    <div class="buttons-preview" id="editgrantdata_submit">
                                         <a href="javascript:void(0);" class="btn btn-success">确认修改</a>
                                         <a href="javascript:void(0);" class="btn btn-danger">放弃修改</a>
                                         <a href="javascript:void(0);" class="btn btn-danger" data-hid="{$hid}">删除设备</a>
@@ -172,11 +173,125 @@ Purchase: https://wrapbootstrap.com/theme/beyondadmin-adminapp-angularjs-mvc-WB0
     {include file='common/script' /}
     <!-- /Need Scripts -->
     <!--Page Related Scripts-->
-    <script src="__dm__/js/dmdatas.js"></script>
+    <script src="__dm__/js/dmallocation.js"></script>
+    <script src="__dm__/js/bsdtp/bootstrap-datetimepicker.js"></script>
+    <script src="__dm__/js/bsdtp/locales/bootstrap-datetimepicker.zh-CN.js"></script>
     <script src="__dm__/js/jquery-validation-1.14.0/dist/jquery.validate.js"></script>
     <script src="__dm__/js/jquery-validation-1.14.0/dist/localization/messages_zh.js"></script>
 
     <script type="text/javascript">
+        var components = "{$holdinfo['components']}";
+        components = components.split(",");
+        for(x in components){
+            if(components[x] != ""){
+                if($("input[value='" + components[x] + "']").length > 0){
+                    $("input[value='" + components[x] + "']").attr("checked", true);
+                } else {
+                    var html = "";
+                    html += '<div class="col-lg-4 col-sm-4 col-xs-4">';
+                    html += '<div class="checkbox"><label>';
+                    html += '<input type="checkbox" name="ds_component" value="';
+                    html += components[x];
+                    html += '" class="colored-success" checked="checked"><span class="text">';
+                    html += components[x];
+                    html += '</span></label></div></div>';
+                    $("#editgrantdata .form-group:eq(2) .row").append(html);
+                }
+            }
+        }
+
+
+        $('#ds_time').datetimepicker({
+            language:  'zh-CN',
+            weekStart: 1,
+            todayBtn:  1,
+            autoclose: 1,
+            todayHighlight: 1,
+            startView: 2,
+            minView: 2,
+            forceParse: 0
+        });       
+
+        function validaform(){
+            return $("#editgrantdata").validate({
+                rules:{
+                    ds_pid: {
+                        required: true,
+                        remote: {
+                            url: 'inputcheck.html',
+                            type: "post",
+                            data: {
+                                type: "grant_pid",
+                                ds_pid: function(){
+                                    return $("#ds_pid").val();
+                                }
+                            }
+                        }
+                    },
+                    ds_an: {
+                        required: true,
+                        remote: {
+                            url: 'inputcheck.html',
+                            type: "post",
+                            data: {
+                                type: "grant_an",
+                                ds_an: function(){return $("#ds_an").val();}
+                            }
+                        }
+                    },
+                    ds_time: {
+                        required: true,
+                        dateISO: true
+                    }
+                },
+                messages:{
+                    ds_pid: {
+                        required: "领用人ID不能为空",
+                        remote: "领用人ID不存在!"
+                    },
+                    ds_an: {
+                        required: "固资编号不能为空",
+                        remote: "固资不存在，或已经发放！"
+                    },
+                    ds_time: {
+                        required: '日期不能为空',
+                        dateISO: "日期格式不正确"
+                    },
+                }
+
+            });
+        }
+        $(function(){
+            $("#getHolderInfoDiv").hide();
+            $("#getDeviceInfoDiv").hide();
+            $("#tipinfo").fadeIn(3000);
+            setInterval(function(){
+                var e = jQuery.Event("keyup");//模拟一个键盘事件
+                e.keyCode =13;//keyCode=13是回车
+                $("#ds_time").trigger(e);                
+            }, 1000);
+            $.validator.setDefaults({
+               debug: true
+            });
+            $(validaform());
+            // $("#tipinfo").click(function(){
+            //     bootbox.alert("提示：可以在[设备管理]——>[配件设置]中添加配件!");
+            //     $(this).remove();
+            // });
+        });
+
+        $("#editgrantdata_submit a:first").on("click",function(event){
+            if(validaform().form()){
+                editgrantdatasubmit();
+
+                //防止重复提交
+                $("#editgrantdata").find("input").val("");
+                $(this).remove();
+            } else {
+
+            }
+
+        });
 
     </script>
 </body>

@@ -165,7 +165,7 @@
         });
 
         //修改领用情况
-        function editHoldInfoSubmit(){
+        function editgrantdatasubmit(){
             var datas = {};
             datas.types = "editPersonnel";
             datas.uid = $("#uid").data('uid');
@@ -202,25 +202,26 @@
         //     // $("#personnel_submit a:first").on("click",function(){});            
         }
 
-        //放弃人员修改
-        $("#editpersonnel_submit a:eq(1)").on("click",function(){
+        //放弃领用修改
+        $("#editgrantdata_submit a:eq(1)").on("click",function(){
             window.location.reload();
         });
 
-        //删除人员
-        $("#editpersonnel_submit a:eq(2)").on("click",function(){
+        //删除领用记录
+        $("#editgrantdata_submit a:eq(2)").on("click",function(){
             bootbox.setDefaults("locale", "zh_CN");
-            var lookpersonnel = $(this).data('uid');
+            var lookholdinfo = $(this).data('hid');
             bootbox.confirm("确实要删除吗？操作不可逆！", function(result){
                 if(result){
                     $.post(
-                        "box4.html",
+                        "allochandle.html",
                         {
-                            types: "deletePersonnel",
-                            uid: lookpersonnel
+                            types: "deleteholdinfo",
+                            uid: lookholdinfo
                         },
                         function(data){
                             if(data == "1"){
+                                lookresult(data, 0)
                                 // bootbox.alert("已删除");
                                 $(".widget-caption span").html("&nbsp;删除成功");
                                 $(".widget-caption span").css("color", "#9fff00");
