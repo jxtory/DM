@@ -216,12 +216,12 @@
                     $.post(
                         "allochandle.html",
                         {
-                            types: "deleteholdinfo",
-                            uid: lookholdinfo
+                            types: "deleteHoldInfo",
+                            hid: lookholdinfo
                         },
                         function(data){
                             if(data == "1"){
-                                lookresult(data, 0)
+                                lookresult(data, 1)
                                 // bootbox.alert("已删除");
                                 $(".widget-caption span").html("&nbsp;删除成功");
                                 $(".widget-caption span").css("color", "#9fff00");

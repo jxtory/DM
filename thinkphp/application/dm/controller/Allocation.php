@@ -160,10 +160,10 @@ class Allocation extends Controller
             return $res;
         }
 
-        if(input("post.types") == "deleteholdinfo"){
+        if(input("post.types") == "deleteHoldInfo"){
             $data = input("post.hid");
             $res = db('holders')->where('id', $data)->delete();
-            return dump($res);
+            return $res;
         }
 
         return $this->rehome;
