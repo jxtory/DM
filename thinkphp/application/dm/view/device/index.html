@@ -52,7 +52,12 @@ Purchase: https://wrapbootstrap.com/theme/beyondadmin-adminapp-angularjs-mvc-WB0
                                     <thead>
                                         <tr>
                                             <th>
-                                                #ID<span class="visible-xs red">点击编辑</span>
+                                                #ID
+                                                <span id="tipinfo" style="display: none;">
+                                                    <a href="javascript:void(0);" class="badge badge-info" data-container="body" data-titleclass="bordered-blue" data-class="" data-toggle="popover-hover" data-placement="right" data-title="提示:" data-content="点击ID可以编辑" data-original-title="" title="">
+                                                        ?
+                                                    </a>
+                                                </span>
                                             </th>
                                             <th>
                                                 固资编号(An)
@@ -116,7 +121,9 @@ Purchase: https://wrapbootstrap.com/theme/beyondadmin-adminapp-angularjs-mvc-WB0
     <script src="__dm__/js/dmdatas.js"></script>
 
     <script type="text/javascript">
-
+        $(function(){
+            $("#tipinfo").fadeIn(3000);
+        });
     </script>
 </body>
 <!--  /Body -->
