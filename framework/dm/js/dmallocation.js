@@ -169,6 +169,7 @@
             $(window).scrollTop($(".page-body").offset().top);
             var datas = {};
             datas.types = "editHoldInfo";
+            datas.hid = $("#hid").data('hid');
             datas.ds_pid = $("#ds_pid").val();
             datas.ds_an = $("#ds_an").val();
             datas.ds_component = function(){
