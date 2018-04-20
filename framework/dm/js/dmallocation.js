@@ -166,24 +166,26 @@
 
         //修改领用情况
         function editgrantdatasubmit(){
+            $(window).scrollTop($(".page-body").offset().top);
             var datas = {};
-            datas.types = "editPersonnel";
-            datas.uid = $("#uid").data('uid');
-            datas.personnel = $("#personnel").val();
-            datas.phoneticize = $("#phoneticize").val();
-            datas.sex = $("#sex").val();
-            datas.dept1 = $("#dept1").val();
-            datas.dept2 = $("#dept2").val();
-            datas.leader = $("#leader").val();
-            datas.position = $("#position").val();
-            datas.statusdm = $("#statusdm")[0].selectedIndex;
-            datas.timedm = $("#timedm").val();
+            datas.types = "editHoldInfo";
+            datas.ds_pid = $("#ds_pid").val();
+            datas.ds_an = $("#ds_an").val();
+            datas.ds_component = function(){
+                var str = "";
+                $("input[name='ds_component']:checked").each(function() {
+                    str += $(this).val() + ",";
+                });;
+                return str;
+            }; 
+            datas.ds_time = $("#ds_time").val();
             $.post(
-                'box4.html',
+                'allochandle.html',
                 datas,
                 function(data){
                     lookresult(data, 1);
                     if(data == "1"){
+                        // bootbox.alert("添加成功");
                         $(".widget-caption span").html("&nbsp;修改成功");
                         $(".widget-caption span").css("color", "#9fff00");
                         setTimeout(function(){
@@ -191,15 +193,12 @@
                         },1000); 
                     } else if (data == "2"){
                         bootbox.alert("未知的错误");
+                        // $("#personneldata").reset();
                     } else {
                         bootbox.alert("修改失败");
-                        setTimeout(function(){
-                            window.location.reload();
-                        },1000);
                     }
 
             });
-        //     // $("#personnel_submit a:first").on("click",function(){});            
         }
 
         //放弃领用修改

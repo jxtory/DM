@@ -144,18 +144,18 @@ class Allocation extends Controller
             return $res;
         }
 
-        if(input("post.types") == "editDevice"){
+        if(input("post.types") == "editHoldInfo"){
             $datas = input();
             unset($datas['types']);
+            $did = db("devices")->field("id")->where("an", input("post.ds_an"))->find();
+
             $data = [
-                'an'  =>  $datas['an'],
-                'type'  =>  $datas['devicetype'],
-                'brand'  =>  $datas['brand'],
-                'model'  =>  $datas['model'],
-                'sn'  =>  $datas['sn'],
-                'comment'  =>  $datas['comment'],
+                'did'  =>  $did['id'],
+                'holder'  =>  $datas['ds_pid'],
+                'grant_date'  =>  $datas['ds_time'],
+                'components'    =>  empty($datas['ds_component']) ? "" : $datas['ds_component']
             ];
-            $res = db('devices')->where('id', $datas['did'])->update($data);
+            $res = db('holders')->where('id', $datas['hid'])->update($data);
 
             return $res;
         }
