@@ -147,12 +147,7 @@ class Allocation extends Controller
         if(input("post.types") == "editHoldInfo"){
             $datas = input();
             unset($datas['types']);
-            $did = db("devices")->field("id")->where("an", input("post.ds_an"))->find();
-
             $data = [
-                'did'  =>  $did['id'],
-                'holder'  =>  $datas['ds_pid'],
-                'grant_date'  =>  $datas['ds_time'],
                 'components'    =>  empty($datas['ds_component']) ? "" : $datas['ds_component']
             ];
             $res = db('holders')->where('id', $datas['hid'])->update($data);

@@ -170,8 +170,6 @@
             var datas = {};
             datas.types = "editHoldInfo";
             datas.hid = $("#hid").data('hid');
-            datas.ds_pid = $("#ds_pid").val();
-            datas.ds_an = $("#ds_an").val();
             datas.ds_component = function(){
                 var str = "";
                 $("input[name='ds_component']:checked").each(function() {
@@ -179,7 +177,6 @@
                 });;
                 return str;
             }; 
-            datas.ds_time = $("#ds_time").val();
             $.post(
                 'allochandle.html',
                 datas,
