@@ -1,11 +1,8 @@
 <?php
 namespace app\dm\controller;
-use think\Controller;
-use think\Db;
-use think\Validate;
-use think\Loader;
+use app\dm\controller\Dmbase;
 
-class Device extends Controller
+class Device extends Dmbase
 {
     private $rehome = "<script>window.location.replace('/dm');</script>";
     public function index()

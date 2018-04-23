@@ -1,10 +1,8 @@
 <?php
 namespace app\dm\controller;
-use think\Controller;
-use think\Db;
-use think\Validate;
-use think\Loader;
-class Allocation extends Controller
+use app\dm\controller\Dmbase;
+
+class Allocation extends Dmbase
 {
     private $rehome = "<script>window.location.replace('/dm');</script>";
     public function index()
