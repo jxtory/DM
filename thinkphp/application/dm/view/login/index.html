@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<!--
+BeyondAdmin - Responsive Admin Dashboard Template build with Twitter Bootstrap 3.3.6
+Version: 1.6.0
+Purchase: https://wrapbootstrap.com/theme/beyondadmin-adminapp-angularjs-mvc-WB06R48S4
+-->
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!--Head-->
+<head>
+    <meta charset="utf-8" />
+    <title>登陆系统</title>
+    {include file='common/head' /}
+</head>
+<!--Head Ends-->
+<!--Body-->
+<body>
+    <div class="login-container animated fadeInDown">
+        <div class="loginbox bg-white">
+            <div class="loginbox-title">请登陆</div>
+            <div class="loginbox-or">
+                <div class="or-line"></div>
+                <div class="or">Login</div>
+            </div>
+            <form action="">
+                <div class="loginbox-textbox">
+                    <input type="text" class="form-control" placeholder="用户名" />
+                </div>
+                <div class="loginbox-textbox">
+                    <input type="text" class="form-control" placeholder="密码" />
+                </div>
+                <div class="loginbox-forgot">
+                    <a href="javascript: void(0);" class="password_tip">忘了密码?</a>
+                </div>
+            </form>
+            <div class="loginbox-submit">
+                <!-- <input type="button" class="btn btn-primary btn-block" value="登陆"> -->
+                <a href="javascript: void(0);" class="btn btn-primary btn-block">登陆</a>
+            </div>
+            <div class="loginbox-signup">
+                <a href="register.html">注册申请</a>
+            </div>
+        </div>
+        <div class="logobox">
+            <span class="text-primary">[设备管理系统]:使用后台账户密码登陆</span>
+        </div>
+    </div>
+
+    <!--Basic Scripts-->
+    {include file='common/script' /}
+    <!--Beyond Scripts-->
+
+    <script src="__dm__/js/ba/slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="__dm__/js/nest/canvas-nest.js"></script>
+    <script>
+        $(".password_tip").click(function(){
+            bootbox.alert("忘记密码?请联系管理员！");
+        });
+    </script>
+    
+</body>
+<!--Body Ends-->
+</html>

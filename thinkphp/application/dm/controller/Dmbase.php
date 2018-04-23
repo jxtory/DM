@@ -13,13 +13,15 @@ class Dmbase extends Controller
 		'username'	=>	'root',
 		'password'	=>	'',
 		'charset'	=>	'utf8',
-		'prefix'	=>	'dm_'
+		'prefix'	=>	'uc_'
 	];
 
 	public function _initialize()
 	{
 		//检查数据库是否准备好
 		$this->initcheck();
+
+		//检测登陆状态
 
 	}
 
