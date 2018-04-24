@@ -17,7 +17,7 @@ return [
     // 应用命名空间
     'app_namespace'          => 'app',
     // 应用调试模式
-    'app_debug'              => true,
+    'app_debug'              => false,
     // 应用Trace
     'app_trace'              => false,
     // 应用模式状态
@@ -151,10 +151,10 @@ return [
     // +----------------------------------------------------------------------
 
     // 异常页面的模板文件
-    'exception_tmpl'         => THINK_PATH . 'tpl' . DS . 'think_exception.tpl',
+    'exception_tmpl'         => APP_PATH . 'dm' . DS . 'view' . DS . 'common' . DS . 'func' . DS . 'exception.html',
 
     // 错误显示信息,非调试模式有效
-    'error_message'          => '页面错误！请稍后再试～',
+    'error_message'          => '出错了！如有问题请联系管理员！',
     // 显示错误信息
     'show_error_msg'         => false,
     // 异常处理handle类 留空使用 \think\exception\Handle
@@ -238,4 +238,8 @@ return [
         'var_page'  => 'page',
         'list_rows' => 15,
     ],
+
+    'http_exception_template'   =>  [
+        404 =>  APP_PATH . 'dm' . DS . 'view' . DS . 'common' . DS . 'func' . DS . '404.html'
+    ]
 ];

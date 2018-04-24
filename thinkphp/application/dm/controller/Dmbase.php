@@ -22,7 +22,7 @@ class Dmbase extends Controller
 		$this->initcheck();
 
 		//检测登陆状态
-		$this->error("有错误！");
+		// $this->error("有错误！");
 
 	}
 
