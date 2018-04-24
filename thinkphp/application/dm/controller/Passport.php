@@ -1,9 +1,13 @@
 <?php
 namespace app\dm\controller;
-use app\dm\controller\Dmbase;
 
-class Usercenter extends Dmbase
+class Passport extends Dmbase
 {
+	public function _initialize()
+	{
+		return;
+	}
+
     public function login()
     {
         return $this->fetch("");
