@@ -10,7 +10,7 @@
                                         
                                     </div>
                                     <section>
-                                        <h2><span><i class="fa fa-key">Admin</i></span></h2>
+                                        <h2><span><i class="fa fa-key" style="text-transform:capitalize">{$Request.session.username}</i></span></h2>
                                     </section>
                                 </a>
                                 <!--Login Area Dropdown-->
@@ -24,7 +24,7 @@
                                         </a>
                                     </li>
                                     <li class="dropdown-footer">
-                                        <a href="login.html">
+                                        <a href="{:url('dm/passport/logout')}">
                                             退出登陆
                                         </a>
                                     </li>

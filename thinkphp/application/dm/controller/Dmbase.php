@@ -9,7 +9,7 @@ class Dmbase extends Controller
 	protected $dbUser = [
 		'type'	=>	'mysql',
 		'hostname'	=>	'127.0.0.1',
-		'database'	=>	'test',
+		'database'	=>	'uc',
 		'username'	=>	'root',
 		'password'	=>	'',
 		'charset'	=>	'utf8',
