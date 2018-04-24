@@ -18,4 +18,10 @@ class Passport extends Dmbase
     	return $this->fetch("");
     }
 
+    public function logout()
+    {
+        session(null);
+        $this->success('退出成功！', 'passport/login');
+    }
+
 }

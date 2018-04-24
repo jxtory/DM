@@ -16,7 +16,6 @@ return [
             '__about__'	=>	'<span class="label label-azure">本系统由<a href="javascript: void(0);" class="label label-info">IT部</a>提供</span>',
             '__apn__'	=>	'<a href="javascript: void(0);" class="label label-info">设备管理系统</a>',
             '__style__'	=>	'\framework',
-            '__styleba__' => '\framework\ba\assets',
             '__dm__'    =>  '\framework\dm',
     ],
 ];

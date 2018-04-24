@@ -141,7 +141,13 @@ return [
     ],
 
     // 视图输出字符串内容替换
-    'view_replace_str'       => [],
+    'view_replace_str'       => [
+            '__Room__'  =>  'Room Version 1.0',
+            '__about__' =>  '<span class="label label-azure">本系统由<a href="javascript: void(0);" class="label label-info">IT部</a>提供</span>',
+            '__apn__'   =>  '<a href="javascript: void(0);" class="label label-info">设备管理系统</a>',
+            '__style__' =>  '\framework',
+            '__dm__'    =>  '\framework\dm',
+    ],
     // 默认跳转页面对应的模板文件
     'dispatch_success_tmpl'  => APP_PATH . 'dm' . DS . 'view' . DS . 'common' . DS . 'func' . DS . 'jump.html',
     'dispatch_error_tmpl'    => APP_PATH . 'dm' . DS . 'view' . DS . 'common' . DS . 'func' . DS . 'jump.html',
