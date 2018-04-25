@@ -10,6 +10,10 @@ class Sys extends Dmbase
         return $this->error("尚未开放");
     }
 
+    public function user()
+    {
+        return $this->redirect("dm/usercenter/index");
+    }
     public function datas()
     {
         return $this->fetch("datas");

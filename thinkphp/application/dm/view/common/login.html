@@ -15,11 +15,11 @@
                                 </a>
                                 <!--Login Area Dropdown-->
                                 <ul class="pull-right dropdown-menu dropdown-arrow dropdown-login-area">
-                                    <li class="username"><a>Admin</a></li>
-                                    <li class="theme-area text-center"><a href="javascript: void(0);">超级管理员</a></li>
+                                    <li class="username"><a>{$Request.session.username}</a></li>
+                                    <li class="theme-area text-center"><a href="javascript: void(0);">{$authlevel}</a></li>
                                     <!--Avatar Area-->
                                     <li class="dropdown-footer">
-                                        <a href="login.html">
+                                        <a href="{:url('dm/usercenter/cpw', array('id' => $Request.session.uid))}">
                                             修改密码
                                         </a>
                                     </li>
