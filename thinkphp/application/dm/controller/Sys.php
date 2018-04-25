@@ -7,8 +7,7 @@ class Sys extends Dmbase
     private $rehome = "<script>window.location.replace('/dm');</script>";
     public function index()
     {   
-        return "......";
-
+        return $this->error("尚未开放");
     }
 
     public function datas()

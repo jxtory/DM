@@ -9,4 +9,9 @@ class Index extends Dmbase
         return $this->fetch("index");
     }
 
+    public function window()
+    {
+    	return $this->error("尚未开放");
+    }
+
 }
