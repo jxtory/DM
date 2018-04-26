@@ -131,21 +131,23 @@
                                     <span class="menu-text"> 管理中心 </span>
                                 </a>
                             </li>
-                            <li>
-                                <a href="{:url('sys/user')}">
-                                    <span class="menu-text"> 用户管理 </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{:url('sys/datas')}">
-                                    <span class="menu-text"> 库表管理 </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{:request()->domain()}/phpmyadmin/" target="_blank">
-                                    <span class="menu-text"> PhpMyAdmin </span>
-                                </a>
-                            </li>
+                            {if condition="$authlevel == '超级管理员'"}
+                                <li>
+                                    <a href="{:url('sys/user')}">
+                                        <span class="menu-text"> 用户管理 </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{:url('sys/datas')}">
+                                        <span class="menu-text"> 库表管理 </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{:request()->domain()}/phpmyadmin/" target="_blank">
+                                        <span class="menu-text"> PhpMyAdmin </span>
+                                    </a>
+                                </li>
+                            {/if}
                         </ul>
                     </li>
                 </ul>
