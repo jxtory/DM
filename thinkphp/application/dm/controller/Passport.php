@@ -46,10 +46,17 @@ class Passport extends Dmbase
             $data = [
                 'username'      =>      input('post.username'),
                 'password'      =>      md5(input('post.password')),
-                'createdate'    =>      now(),
+                'createdate'    =>      date('Y-m-d'),
             ];
 
             $user = db('user', $this->dbUser)->insert($data);
+
+            $data_auth = [
+                'uid'       =>      db('user', $this->dbUser)->getLastInsID(),
+                'authlevel' =>      0
+            ];
+
+            $userauth = db('auth', $this->dbUser)->insert($data_auth);
             if($user){
                 $this->success("注册成功·立即跳转到登陆页面", "passport/login");
             } else {
