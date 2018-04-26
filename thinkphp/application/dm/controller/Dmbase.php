@@ -153,7 +153,11 @@ class Dmbase extends Controller
 					}
 				}
 
-				$createuc->query("INSERT INTO uc_user (username, password) value('admin', md5('admin'))");
+				//创建默认账户
+				$createuc->query("INSERT INTO uc_user (username, password, createdate) VALUE('admin', md5('admin'), now())");
+				$createuc->query("INSERT INTO uc_auth (uid, authlevel) VALUE(1, 3) ");
+
+				//authlevel 
 
 				$createuc->close();
 			}
