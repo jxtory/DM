@@ -4,7 +4,7 @@ Source Host: localhost
 Source Database: uc
 Target Host: localhost
 Target Database: uc
-Date: 2018/4/24 0:14:06
+Date: 2018/4/26 16:43:17
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -23,6 +23,7 @@ CREATE TABLE `uc_auth` (
 -- ----------------------------
 CREATE TABLE `uc_logs` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `log_uid` int(11) NOT NULL,
   `log_title` varchar(255) NOT NULL,
   `log_content` varchar(255) NOT NULL,
   `log_time` datetime NOT NULL,

@@ -8,6 +8,7 @@
                             <span class="menu-text"> 系统首页 </span>
                         </a>
                     </li>
+                    {if condition="$authlevelv >= 1"}
                     <!--快速窗口-->
                     <li>
                         <a href="{:url('index/window')}">
@@ -150,6 +151,7 @@
                             {/if}
                         </ul>
                     </li>
+                    {/if}
                 </ul>
                 <!-- /Sidebar Menu -->
             </div>

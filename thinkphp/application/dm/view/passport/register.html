@@ -22,17 +22,22 @@ Purchase: https://wrapbootstrap.com/theme/beyondadmin-adminapp-angularjs-mvc-WB0
                 <div class="or-line"></div>
                 <div class="or">Register</div>
             </div>
-            <form action="">
+            <form id="regdata" method="post">
                 <div class="loginbox-textbox">
-                    <input type="text" class="form-control" placeholder="用户名" />
+                    <input type="text" class="form-control" id="username" name="username" placeholder="用户名" />
                 </div>
                 <div class="loginbox-textbox">
-                    <input type="text" class="form-control" placeholder="密码" />
+                    <input type="password" class="form-control" id="password" name="password" placeholder="密码" />
+                </div>
+                <div class="loginbox-textbox">
+                    <input type="captcha" class="form-control" id="captcha" name="captcha" placeholder="验证码" />
+                    <hr>
+                    <img style="width: 100%;" src="{:captcha_src()}" onclick="this.src='{:captcha_src()}?+Math.random()'" alt="captcha">
                 </div>
             </form>
             <div class="loginbox-submit">
                 <!-- <input type="button" class="btn btn-primary btn-block" value="登陆"> -->
-                <a href="javascript: void(0);" class="btn btn-primary btn-block">注册申请</a>
+                <a href="javascript: void(0);" class="btn btn-primary btn-block" onclick="$('#regdata').submit();">注册申请</a>
             </div>
             <div class="loginbox-signup">
                 <a href="login">已有账号</a>

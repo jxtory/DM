@@ -37,6 +37,24 @@ class Passport extends Dmbase
 
     public function register()
     {
+        if(request()->isPost()){
+            if(!captcha_check($data['captcha'])){
+                $this->error("验证码错误");
+             //验证失败
+            };
+            $data = [
+                'username'      =>      input('post.username'),
+                'password'      =>      md5(input('post.password')),
+                'createdate'    =>      now(),
+            ];
+
+            $user = db('user', $this->dbUser)->insert($data);
+            if($user){
+                $this->success("注册成功·立即跳转到登陆页面", "passport/login");
+            } else {
+                $this->error("注册失败", "passport/register");
+            }            
+        }
     	return $this->fetch("");
     }
 
