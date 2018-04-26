@@ -25,10 +25,33 @@ class Dmbase extends Controller
 		if(!session('username')){
 			// $this->error('你必须先登陆系统', 'passport/login');
 			return $this->redirect('passport/login');
-		}
+		} else {
+			//检测账号登记
+			if($authlevel = db("auth", $this->dbUser)->field('authlevel')->where('uid', session('uid'))->find()){
+				switch ($authlevel['authlevel']) {
+					case 0:
+						$authlevelname = "审核中";
+						break;
+					case 1:
+						$authlevelname = "浏览者";
+						break;
+					case 2:
+						$authlevelname = "管理员";
+						break;
+					case 3:
+						$authlevelname = "超级管理员";
+						break;
+					
+					default:
+						$authlevelname = "未知";
+						break;
+				}
 
-		$this->assign("authlevel", "超级管理员");
-		// $this->error("有错误！");
+			}
+			//公示权限类型
+			$this->assign("authlevel", $authlevelname);
+		}
+		return;
 
 	}
 
@@ -156,8 +179,6 @@ class Dmbase extends Controller
 				//创建默认账户
 				$createuc->query("INSERT INTO uc_user (username, password, createdate) VALUE('admin', md5('admin'), now())");
 				$createuc->query("INSERT INTO uc_auth (uid, authlevel) VALUE(1, 3) ");
-
-				//authlevel 
 
 				$createuc->close();
 			}
