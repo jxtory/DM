@@ -23,7 +23,8 @@ class Dmbase extends Controller
 
 		//检测登陆状态
 		if(!session('username')){
-			$this->error('你必须先登陆系统', 'passport/login');
+			// $this->error('你必须先登陆系统', 'passport/login');
+			return $this->redirect('passport/login');
 		}
 
 		$this->assign("authlevel", "超级管理员");
