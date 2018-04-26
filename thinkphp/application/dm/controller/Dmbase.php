@@ -51,6 +51,10 @@ class Dmbase extends Controller
 			//公示权限类型
 			$this->assign("authlevelv", $authlevel['authlevel']);
 			$this->assign("authlevel", $authlevelname);
+
+			if($authlevel['authlevel'] < 1){
+				return $this->redirect("passport/nopassport");
+			}
 		}
 		return;
 

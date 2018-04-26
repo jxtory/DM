@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<!--
+BeyondAdmin - Responsive Admin Dashboard Template build with Twitter Bootstrap 3.3.6
+Version: 1.6.0
+Purchase: https://wrapbootstrap.com/theme/beyondadmin-adminapp-angularjs-mvc-WB06R48S4
+-->
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!--Head-->
+<head>
+    <meta charset="utf-8" />
+    <title>权限不足</title>
+    {include file='common/head' /}
+</head>
+<!--Head Ends-->
+<!--Body-->
+<body>
+    <div class="login-container animated fadeInDown">
+        <div class="loginbox bg-white">
+            <div class="well system-message">
+                    <h2>抱歉！</h2>
+                    <p class="error text-danger">您的权限不足以访问系统功能</p>
+                <hr>
+                <p class="text-info">
+                    请与系统管理员联系！
+                </p>
+                <p>
+                    <a href="{:url('dm/passport/logout')}">退出登录</a>
+                </p>
+            </div>
+        </div>
+        <div class="logobox">
+            <span class="text-primary">__apn__————By IT SUPPORT</span>
+        </div>
+    </div>
+
+
+    <!--Basic Scripts-->
+    {include file='common/script' /}
+    <!--Beyond Scripts-->
+
+    <script src="__dm__/js/ba/slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="__dm__/js/nest/canvas-nest.js"></script>
+</body>
+<!--Body Ends-->
+</html>

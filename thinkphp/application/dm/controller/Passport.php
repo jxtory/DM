@@ -43,6 +43,11 @@ class Passport extends Dmbase
                 $this->error("验证码错误");
              //验证失败
             };
+
+            if(db('user', $this->dbUser)->where("username", $datas['username'])->find()){
+                return $this->error("账户已存在!", "passport/register");
+            }
+
             $data = [
                 'username'      =>      input('post.username'),
                 'password'      =>      md5(input('post.password')),
@@ -64,6 +69,11 @@ class Passport extends Dmbase
             }            
         }
     	return $this->fetch("");
+    }
+
+    public function nopassport()
+    {
+        return $this->fetch("");
     }
 
     public function logout()
