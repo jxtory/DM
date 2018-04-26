@@ -38,7 +38,8 @@ class Passport extends Dmbase
     public function register()
     {
         if(request()->isPost()){
-            if(!captcha_check($data['captcha'])){
+            $datas = input('post.');
+            if(!captcha_check($datas['captcha'])){
                 $this->error("验证码错误");
              //验证失败
             };
