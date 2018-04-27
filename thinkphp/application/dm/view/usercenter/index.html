@@ -82,12 +82,26 @@ Purchase: https://wrapbootstrap.com/theme/beyondadmin-adminapp-angularjs-mvc-WB0
                                     </thead>
                                     <tbody>
                                         {volist name='datas' id="data"}
-                                        <tr>
+                                        {if condition="$data['authlevel'] >= 2"}
+                                        <tr class="bg-blue">
+                                        {elseif condition="$data['authlevel'] == 1"}
+                                        <tr class="bg-green">
+                                        {else /}
+                                        <tr class="bg-white">                                      
+                                        {/if}
                                             <td>{$data['id']}</td>
                                             <td>{$data['username']}</td>
                                             <td>{$data['createdate']}</td>
                                             <td>{$data['authlevel']}</td>
-                                            <td>{$data['authlevel']}</td>
+                                            <td>
+                                                {switch name="data['authlevel']"}
+                                                    {case value="0"}审核中{/case}
+                                                    {case value="1"}浏览者{/case}
+                                                    {case value="2"}管理员{/case}
+                                                    {case value="3"}超级管理员{/case}
+                                                {$data['authlevel']}
+                                                {/switch}
+                                            </td>
                                             <td>{$data['loginsum']}</td>
                                             <td>{$data['loginlast']}</td>
                                         </tr>
