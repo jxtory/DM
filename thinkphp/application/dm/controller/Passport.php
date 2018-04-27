@@ -20,8 +20,11 @@ class Passport extends Dmbase
             $user = db('user', $this->dbUser)->where('username', $data['username'])->find();
             if($user){
                 if($user['password'] == md5($data['password'])){
+                    $loginsum = ['loginsum' =>  $user['loginsum'] + 1, "loginlast" => date('Y-m-d H:i:s')];
+                    $loginsum = db('user', $this->dbUser)->where("id", $user['id'])->update($loginsum);
                     session("username", $data['username']);
                     session("uid", $user['id']);
+                    session("loginsum", $loginsum + 1);
                     $this->success('登陆成功', 'index/index');
                 } else {
                     $this->error("用户名或密码不正确！");
