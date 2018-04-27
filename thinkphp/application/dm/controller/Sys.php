@@ -4,6 +4,12 @@ use app\dm\controller\Dmbase;
 
 class Sys extends Dmbase
 {
+    public function _initialize()
+    {
+        parent::_initialize();
+        return $this->levelCheck(2);
+    }
+
     public function index()
     {   
         return $this->error("尚未开放");

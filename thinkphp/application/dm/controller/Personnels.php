@@ -4,12 +4,17 @@ use app\dm\controller\Dmbase;
 
 class Personnels extends Dmbase
 {
+    public function _initialize()
+    {
+        parent::_initialize();
+        return $this->levelCheck(2);
+    }
+
     public function index()
     {   
         $datas = db('personnels')->paginate(5);
         $this->assign('datas', $datas);
         return $this->fetch('index');
-
     }
 
     //新增加人员

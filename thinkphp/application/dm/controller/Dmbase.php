@@ -205,4 +205,16 @@ class Dmbase extends Controller
 
 		return $this->error("处理错误！正在返回！");
 	}
+
+	protected function levelCheck($level = 2)
+	{
+		$authlevel = db("auth", $this->dbUser)->field('authlevel')->where('uid', session('uid'))->find();
+		if($authlevel['authlevel'] >= $level){
+			return "";
+		} else {
+			return $this->error("您的权限不足！");
+		}
+
+		return $this->error("处理错误！正在返回！");
+	}
 }

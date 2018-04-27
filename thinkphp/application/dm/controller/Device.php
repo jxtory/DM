@@ -4,6 +4,12 @@ use app\dm\controller\Dmbase;
 
 class Device extends Dmbase
 {
+    public function _initialize()
+    {
+        parent::_initialize();
+        return $this->levelCheck(2);
+    }
+
     public function index()
     {
         $datas = db('devices')->paginate(5);
