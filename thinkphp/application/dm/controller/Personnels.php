@@ -4,7 +4,6 @@ use app\dm\controller\Dmbase;
 
 class Personnels extends Dmbase
 {
-    private $rehome = "<script>window.location.replace('/dm');</script>";
     public function index()
     {   
         $datas = db('personnels')->paginate(5);

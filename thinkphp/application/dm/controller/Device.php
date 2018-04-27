@@ -4,7 +4,6 @@ use app\dm\controller\Dmbase;
 
 class Device extends Dmbase
 {
-    private $rehome = "<script>window.location.replace('/dm');</script>";
     public function index()
     {
         $datas = db('devices')->paginate(5);

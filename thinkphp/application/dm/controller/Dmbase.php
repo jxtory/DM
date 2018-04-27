@@ -16,6 +16,8 @@ class Dmbase extends Controller
 		'prefix'	=>	'uc_'
 	];
 
+    protected $rehome = "<script>window.location.replace('/dm');</script>";
+
 	public function _initialize()
 	{
 		//检查数据库是否准备好
