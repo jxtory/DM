@@ -16,7 +16,7 @@
                                 <!--Login Area Dropdown-->
                                 <ul class="pull-right dropdown-menu dropdown-arrow dropdown-login-area">
                                     <li class="username"><a>{$Request.session.username}</a></li>
-                                    <li class="theme-area text-center"><a href="javascript: void(0);">{$authlevel}</a></li>
+                                    <li class="theme-area text-center" id="authlevel" data-authlevel="{$authlevelv}"><a href="javascript: void(0);">{$authlevel}</a></li>
                                     <!--Avatar Area-->
                                     <li class="dropdown-footer">
                                         <a href="{:url('dm/usercenter/cpw')}">
