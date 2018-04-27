@@ -8,18 +8,19 @@
                             <span class="menu-text"> 系统首页 </span>
                         </a>
                     </li>
-                    <!--快速窗口-->
-                    <li>
-                        <a href="{:url('index/window')}">
-                            <i class="menu-icon glyphicon glyphicon-flash blue"></i>
-                            <span class="menu-text"> 快速窗口 </span>
-                        </a>
-                    </li>
                     <!--数据概览-->
                     <li>
                         <a href="{:url('datacenter/index')}">
                             <i class="menu-icon glyphicon glyphicon-list-alt blue"></i>
                             <span class="menu-text"> 数据概览 </span>
+                        </a>
+                    </li>
+                    {if condition="$authlevelv >= 2"}
+                    <!--快速窗口-->
+                    <li>
+                        <a href="{:url('index/window')}">
+                            <i class="menu-icon glyphicon glyphicon-flash blue"></i>
+                            <span class="menu-text"> 快速窗口 </span>
                         </a>
                     </li>
                     <!--分配中心-->
@@ -136,11 +137,13 @@
                                     <span class="menu-text"> 用户管理 </span>
                                 </a>
                             </li>
+                            {if condition="$authlevelv >= 2"}
                             <li>
                                 <a href="{:url('sys/datas')}">
                                     <span class="menu-text"> 库表管理 </span>
                                 </a>
                             </li>
+                            {/if}
                             <li>
                                 <a href="{:request()->domain()}/phpmyadmin/" target="_blank">
                                     <span class="menu-text"> PhpMyAdmin </span>
@@ -148,6 +151,7 @@
                             </li>
                         </ul>
                     </li>
+                    {/if}
                 </ul>
                 <!-- /Sidebar Menu -->
             </div>
