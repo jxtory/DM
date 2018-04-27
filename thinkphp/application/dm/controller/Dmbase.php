@@ -197,11 +197,12 @@ class Dmbase extends Controller
 	{
 		$authlevel = db("auth", $this->dbUser)->field('authlevel')->where('uid', session('uid'))->find();
 		if($authlevel['authlevel'] == 3){
-			return true;
+			return $this->fetch("");
+
 		} else {
-			return false;
+			return $this->error("您的权限不足！");
 		}
 
-		return false;
+		return $this->error("处理错误！正在返回！");
 	}
 }
