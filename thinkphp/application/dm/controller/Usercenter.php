@@ -6,7 +6,13 @@ class Usercenter extends Dmbase
 {
     public function index()
     {
-    	return $this->error("尚未开放");
+    	$datas = db("user a", $this->dbUser)
+            ->field("a.*, b.uid, b.authlevel")
+    		->join("auth b", "a.id = b.uid")
+            ->paginate(15);
+
+        $this->assign("datas", $datas);
+    	return $this->fetch("");
     }
 
     public function cpw()

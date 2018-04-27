@@ -12,7 +12,7 @@ class Allocation extends Dmbase
     
     public function index()
     {
-        return $this->fetch("index");
+        return $this->rehome;
     }
 
     public function editHoldInfo()
