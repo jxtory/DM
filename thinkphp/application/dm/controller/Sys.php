@@ -15,7 +15,12 @@ class Sys extends Dmbase
     }
     public function datas()
     {
-        return $this->fetch("datas");
+        if($this->supperCheck()){
+            return $this->fetch("datas");
+        } else {
+            return $this->error("您的权限不足！");
+        }
+        return $this->rehome;
     }
 
     public function tc()

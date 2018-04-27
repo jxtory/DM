@@ -192,4 +192,16 @@ class Dmbase extends Controller
 		}
 
 	}
+
+	protected function supperCheck()
+	{
+		$authlevel = db("auth", $this->dbUser)->field('authlevel')->where('uid', session('uid'))->find();
+		if($authlevel['authlevel'] == 3){
+			return true;
+		} else {
+			return false;
+		}
+
+		return false;
+	}
 }
