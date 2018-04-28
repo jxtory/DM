@@ -211,7 +211,7 @@ class Dmbase extends Controller
 	{
 		$authlevel = db("auth", $this->dbUser)->field('authlevel')->where('uid', session('uid'))->find();
 		if($authlevel['authlevel'] >= $level){
-			return "";
+			return true;
 		} else {
 			return $this->error("您的权限不足！");
 		}

@@ -6,6 +6,8 @@ class Usercenter extends Dmbase
 {
     public function index()
     {
+        return $this->levelCheck(2);
+
     	$datas = db("user a", $this->dbUser)
             ->field("a.*, b.uid, b.authlevel")
     		->join("auth b", "a.id = b.uid")
@@ -13,6 +15,11 @@ class Usercenter extends Dmbase
 
         $this->assign("datas", $datas);
     	return $this->fetch("");
+    }
+
+    public function lookAuth()
+    {
+        return $this->fetch("")
     }
 
     public function cpw()
