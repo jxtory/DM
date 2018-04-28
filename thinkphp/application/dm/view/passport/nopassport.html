@@ -19,10 +19,14 @@ Purchase: https://wrapbootstrap.com/theme/beyondadmin-adminapp-angularjs-mvc-WB0
         <div class="loginbox bg-white">
             <div class="well system-message">
                     <h2>抱歉！</h2>
-                    <p class="error text-danger">您的权限不足以访问系统功能</p>
+                    <p class="error text-danger">{$Request.session.username}，您的权限不足以访问系统功能</p>
                 <hr>
                 <p class="text-info">
-                    请与系统管理员联系！
+                    账号正处于[{$Request.param.authlevel}]，请与系统管理员联系！
+                </p>
+                <p>
+                    <a href="javascript: void(0);" onclick="bootbox.alert('请联系管理员，帮助开通账号');">升级申请</a>，
+                    <a href="{:url('dm/index/index')}">刷新尝试</a>
                 </p>
                 <p>
                     <a href="{:url('dm/passport/logout')}">退出登录</a>

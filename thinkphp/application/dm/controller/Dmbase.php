@@ -55,7 +55,8 @@ class Dmbase extends Controller
 			$this->assign("authlevel", $authlevelname);
 
 			if($authlevel['authlevel'] < 1){
-				return $this->redirect("passport/nopassport");
+				// return $this->redirect("passport/nopassport", array("authlevel" => '审核中'));
+				return $this->redirect("passport/nopassport", ["authlevel" => $authlevelname]);
 			}
 		}
 		return;
