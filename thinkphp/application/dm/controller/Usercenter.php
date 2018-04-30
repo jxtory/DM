@@ -24,7 +24,31 @@ class Usercenter extends Dmbase
 
     public function cpw()
     {
-    	return $this->error("修改密码, 暂未开放");
+        if(request()->isPost()){
+            $datas = input('post.');
+            if(!captcha_check($datas['captcha'])){
+                $this->error("验证码错误");
+             //验证失败
+            };
+
+            $data = [
+                'password'      =>      md5($datas['password'])
+            ];
+
+            $user = db('user', $this->dbUser)->where('username', session('username'))->update($data);
+
+            if($user){
+                $this->success("修改成功", "passport/login");
+            } else {
+                $this->error("修改失败", "passport/register");
+            }
+        }
+
+        if(session('username')){
+            $this->assign('username', session('username'));
+            return $this->fetch();
+        }
+        return $this->rehome;
     }
 
 }
