@@ -49,7 +49,7 @@ Purchase: https://wrapbootstrap.com/theme/beyondadmin-adminapp-angularjs-mvc-WB0
                                     <span class="widget-caption">用户列表<span></span></span>
                                 </div>
 
-                                <table id="lookpersonnels" class="table table-hover table-striped table-bordered table-condensed">
+                                <table id="lookusers" class="table table-hover table-striped table-bordered table-condensed">
                                     <thead>
                                         <tr>
                                             <th>
@@ -132,6 +132,36 @@ Purchase: https://wrapbootstrap.com/theme/beyondadmin-adminapp-angularjs-mvc-WB0
     <script type="text/javascript">
         $(function(){
             $("#tipinfo").fadeIn(3000);
+        });
+
+        //获得编辑用户页面
+        $("#lookusers tbody tr").dblclick(function(){
+            var uidv = $(this).children('td:first').text();
+            $.post(
+                'editUser.html',
+                {
+                    types: 'editUser',
+                    uid: uidv
+                },
+                function(data){
+                    document.write(data);
+                }
+            );
+        });
+
+        //获得编辑用户页面
+        $("#lookusers tbody tr").find("td:first").mousedown(function(){
+            var uidv = $(this).text();
+            $.post(
+                'editUser.html',
+                {
+                    types: 'editUser',
+                    uid: uidv
+                },
+                function(data){
+                    document.write(data);
+                }
+            );
         });
     </script>
 </body>
