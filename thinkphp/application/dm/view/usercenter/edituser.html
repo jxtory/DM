@@ -138,7 +138,7 @@ Purchase: https://wrapbootstrap.com/theme/beyondadmin-adminapp-angularjs-mvc-WB0
             $("#editusers_submit").remove();
         });
 
-        //修改设备
+        //编辑用户
         function edituserssubmit(){
             var datas = {};
             datas.types = "editUser";
@@ -170,12 +170,37 @@ Purchase: https://wrapbootstrap.com/theme/beyondadmin-adminapp-angularjs-mvc-WB0
             }); 
         }
 
-        //放弃设备修改
+        //重置密码
+        $("#editusers_submit a:eq(1)").on("click",function(){
+            var datas = {};
+            datas.types = "resetUserPassword";
+            datas.uid = $("#uid").data('uid');
+            bootbox.confirm("真的要重置这个账户的密码吗？", function(result){
+                if(result){
+                    $.post(
+                        'userHandle.html',
+                        datas,
+                        function(data){
+                            lookresult(data, 1);
+                            if(data){
+                                bootbox.alert("密码被重置为：" + data + "，请及时修改。!");
+                            } else {
+                                bootbox.alert("重置失败！");
+                            }
+
+                    }); 
+
+                }
+            });
+
+        });
+
+        //放弃编辑
         $("#editusers_submit a:eq(2)").on("click",function(){
             window.location.reload();
         });
 
-        //删除设备
+        //删除用户
         $("#editusers_submit a:eq(3)").on("click",function(){
             bootbox.setDefaults("locale", "zh_CN");
             var lookuser = $(this).data('uid');

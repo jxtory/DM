@@ -85,6 +85,22 @@ class Usercenter extends Dmbase
             return $res;
         }
 
+        if(input("post.types") == "resetUserPassword"){
+            $datas = input();
+            unset($datas['types']);
+            $newpassword = $this->generate_password();
+            $data = [
+                "password"  =>  md5($newpassword)
+            ];
+
+            
+            if($res = db("user", $this->dbUser)->where("id", $datas['uid'])->update($data)){
+                return $newpassword;
+            }
+
+            return null;
+        }
+
         if(input("post.types") == "deleteUser"){
             $userid = input("post.uid");
             $res = db("user, uc_auth", $this->dbUser)
@@ -99,5 +115,20 @@ class Usercenter extends Dmbase
 
         return $this->rehome;
     }
+
+    private function generate_password($length = 8) 
+    { 
+        // 密码字符集，可任意添加你需要的字符 
+        $chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()-_ []{}<>~`+=,.;:/?|'; 
+        $password = ""; 
+        for ($i = 0; $i < $length; $i++){ 
+            // 这里提供两种字符获取方式 
+            // 第一种是使用 substr 截取$chars中的任意一位字符； 
+            // 第二种是取字符数组 $chars 的任意元素 
+            // $password .= substr($chars, mt_rand(0, strlen($chars) – 1), 1); 
+            $password .= $chars[ mt_rand(0, strlen($chars) - 1) ]; 
+        } 
+        return $password; 
+    } 
 
 }
