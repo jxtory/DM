@@ -64,7 +64,7 @@ Purchase: https://wrapbootstrap.com/theme/beyondadmin-adminapp-angularjs-mvc-WB0
                                                 <div class="col-lg-4 col-sm-4 col-xs-4">
                                                     <div class="radio">
                                                         <label>
-                                                            <input name="authlevel" type="radio" class="colored-blue" value="超级管理员">
+                                                            <input name="authlevel" type="radio" class="colored-blue" value="3">
                                                             <span class="text">超级管理员</span>
                                                         </label>
                                                     </div>
@@ -72,7 +72,7 @@ Purchase: https://wrapbootstrap.com/theme/beyondadmin-adminapp-angularjs-mvc-WB0
                                                 <div class="col-lg-4 col-sm-4 col-xs-4">
                                                     <div class="radio">
                                                         <label>
-                                                            <input name="authlevel" type="radio" class="colored-blue" value="管理员">
+                                                            <input name="authlevel" type="radio" class="colored-blue" value="2">
                                                             <span class="text">管理员</span>
                                                         </label>
                                                     </div>
@@ -80,7 +80,7 @@ Purchase: https://wrapbootstrap.com/theme/beyondadmin-adminapp-angularjs-mvc-WB0
                                                 <div class="col-lg-4 col-sm-4 col-xs-4">
                                                     <div class="radio">
                                                         <label>
-                                                            <input name="authlevel" type="radio" class="colored-success" value="浏览者">
+                                                            <input name="authlevel" type="radio" class="colored-success" value="1">
                                                             <span class="text">浏览者</span>
                                                         </label>
                                                     </div>
@@ -88,7 +88,7 @@ Purchase: https://wrapbootstrap.com/theme/beyondadmin-adminapp-angularjs-mvc-WB0
                                                 <div class="col-lg-4 col-sm-4 col-xs-4">
                                                     <div class="radio">
                                                         <label>
-                                                            <input name="authlevel" type="radio" value="审核中">
+                                                            <input name="authlevel" type="radio" value="0">
                                                             <span class="text">审核中</span>
                                                         </label>
                                                     </div>
@@ -104,6 +104,7 @@ Purchase: https://wrapbootstrap.com/theme/beyondadmin-adminapp-angularjs-mvc-WB0
                                 <div class="col-lg-12 col-sm-12 col-xs-12">
                                     <div class="buttons-preview" id="editusers_submit">
                                         <a href="javascript:void(0);" class="btn btn-success">确认修改</a>
+                                        <a href="javascript:void(0);" class="btn btn-blue" data-uid="{$uid}">重置密码</a>
                                         <a href="javascript:void(0);" class="btn btn-danger">放弃修改</a>
                                         <a href="javascript:void(0);" class="btn btn-danger" data-uid="{$uid}">删除用户</a>
                                     </div>
@@ -127,7 +128,7 @@ Purchase: https://wrapbootstrap.com/theme/beyondadmin-adminapp-angularjs-mvc-WB0
     <!--Page Related Scripts-->
 
     <script type="text/javascript">
-        var aln = "{$aln}";
+        var aln = {$aln};
 
         $("input[value='" + aln + "']").prop('checked', true);
 
@@ -140,16 +141,14 @@ Purchase: https://wrapbootstrap.com/theme/beyondadmin-adminapp-angularjs-mvc-WB0
         //修改设备
         function edituserssubmit(){
             var datas = {};
-            datas.types = "editDevice";
+            datas.types = "editUser";
             datas.uid = $("#uid").data('uid');
-            datas.an = $("#ds_an").val();
-            datas.devicetype = $("#ds_type").val();
-            datas.brand = $("#ds_brand").val();
-            datas.model = $("#ds_model").val();
-            datas.sn = $("#ds_sn").val();
-            datas.comment = $("#ds_comment").val();
+            datas.authlevel = function(){
+                return $("input[name='authlevel']:checked").val();
+            }; 
+
             $.post(
-                'devicehandle.html',
+                'userHandle.html',
                 datas,
                 function(data){
                     lookresult(data, 1);
@@ -172,24 +171,24 @@ Purchase: https://wrapbootstrap.com/theme/beyondadmin-adminapp-angularjs-mvc-WB0
         }
 
         //放弃设备修改
-        $("#editusers_submit a:eq(1)").on("click",function(){
+        $("#editusers_submit a:eq(2)").on("click",function(){
             window.location.reload();
         });
 
         //删除设备
-        $("#editusers_submit a:eq(2)").on("click",function(){
+        $("#editusers_submit a:eq(3)").on("click",function(){
             bootbox.setDefaults("locale", "zh_CN");
-            var lookdevice = $(this).data('uid');
+            var lookuser = $(this).data('uid');
             bootbox.confirm("确实要删除吗？操作不可逆！", function(result){
                 if(result){
                     $.post(
-                        "devicehandle.html",
+                        "userHandle.html",
                         {
-                            types: "deleteDevice",
-                            uid: lookdevice
+                            types: "deleteUser",
+                            uid: lookuser
                         },
                         function(data){
-                            if(data == "1"){
+                            if(data > "0"){
                                 // bootbox.alert("已删除");
                                 $(".widget-caption span").html("&nbsp;删除成功");
                                 $(".widget-caption span").css("color", "#9fff00");

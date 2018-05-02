@@ -57,28 +57,10 @@ class Usercenter extends Dmbase
             $this->assign('uid', input('post.uid'));
             $data = db('user', $this->dbUser)->where('id', input('post.uid'))->find();
             $this->assign('username', $data['username']);
-            if($authlevel = db("auth", $this->dbUser)->field('authlevel')->where('uid', input('post.uid'))->find()){
-                switch ($authlevel['authlevel']) {
-                    case 0:
-                        $aln = "审核中";
-                        break;
-                    case 1:
-                        $aln = "浏览者";
-                        break;
-                    case 2:
-                        $aln = "管理员";
-                        break;
-                    case 3:
-                        $aln = "超级管理员";
-                        break;
-                    
-                    default:
-                        $aln = "未知";
-                        break;
-                }
-            }
 
-            $this->assign('aln', $aln);
+            if($authlevel = db("auth", $this->dbUser)->field('authlevel')->where('uid', input('post.uid'))->find()){
+                $this->assign('aln', $authlevel['authlevel']);
+            }
 
             if($data['username'] == "admin"){
                 return $this->fetch("noeditadmin");
@@ -95,31 +77,27 @@ class Usercenter extends Dmbase
         if(input('post.types') == 'editUser'){
             $datas = input();
             unset($datas['types']);
+            $data = [
+                "authlevel" =>  $datas['authlevel']
+            ];
+            $res = db("auth", $this->dbUser)->where("uid", $datas['uid'])->update($data);
 
+            return $res;
         }
 
         if(input("post.types") == "deleteUser"){
-            $data = input("post.uid");
-            $res = db('user a, auth b', $this->dbUser)->where('id', $data)->delete();
+            $userid = input("post.uid");
+            $res = db("user, uc_auth", $this->dbUser)
+                // ->table("uc_user a, uc_auth b")
+                ->using("uc_user, uc_auth")
+                ->where("uc_user.id = uc_auth.uid")
+                ->where("uc_user.id = " . $userid)
+                ->delete();
+
             return $res;
         }
 
         return $this->rehome;
-    }
-
-    public function test()
-    {
-        $sql = db("user, uc_auth", $this->dbUser)
-            // ->table("uc_user a, uc_auth b")
-            ->using("uc_user, uc_auth")
-            ->where("uc_user.id = uc_auth.uid")
-            ->where("uc_user.id = 3")
-            ->fetchSql(true)
-            ->delete();
-
-        // $res = db("", $this->dbUser)->query($sql);
-
-        return dump($sql);
     }
 
 }

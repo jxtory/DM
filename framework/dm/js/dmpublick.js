@@ -29,7 +29,7 @@ function lookresult(data, show){
         return;
     }
 
-    if(show == "undefinded" || show == 0){
+    if(typeof(show) == "undefinded" || show == 0){
         document.write(getData(data));
     } else {
         document.write(getData(data)+$(":root").html());
