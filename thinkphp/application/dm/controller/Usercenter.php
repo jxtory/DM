@@ -38,9 +38,9 @@ class Usercenter extends Dmbase
             $user = db('user', $this->dbUser)->where('username', session('username'))->update($data);
 
             if($user){
-                $this->success("修改成功", "passport/login");
+                $this->success("修改成功", "dm/index/index/");
             } else {
-                $this->error("修改失败", "passport/register");
+                $this->error("修改失败", "dm/index/index/");
             }
         }
 
