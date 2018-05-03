@@ -68,6 +68,11 @@ class Allocation extends Dmbase
 
     public function history()
     {
+        $datas = db("history a, dm_devices b, dm_personnels c")
+            ->field("a.*, b.an, c.personnel")
+            ->where("a.did = b.id and a.holder = c.id")
+            ->paginate(15);
+        $this->assign("datas", $datas);
         return $this->fetch();
     }
 

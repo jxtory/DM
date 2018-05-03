@@ -48,6 +48,44 @@ Purchase: https://wrapbootstrap.com/theme/beyondadmin-adminapp-angularjs-mvc-WB0
                                     <span class="widget-caption">历史记录<span></span></span>
                                 </div>
 
+                                <table id="lookhistory" class="table table-hover table-striped table-bordered table-condensed">
+                                    <thead>
+                                        <tr>
+                                            <th>
+                                                #ID
+                                            </th>
+                                            <th>
+                                                固资编号(An)
+                                            </th>
+                                            <th>
+                                                曾用人(holder)
+                                            </th>
+                                            <th>
+                                                领用日期(grant_time)
+                                            </th>
+                                            <th>
+                                                回收日期(return_time)
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {volist name='datas' id="data"}
+                                        <tr>
+                                            <td>{$data['id']}</td>
+                                            <td>{$data['an']}</td>
+                                            <td>{$data['personnel']}</td>
+                                            <td>{$data['grant_date']}</td>
+                                            <td>{$data['return_time']}</td>
+                                        </tr>
+                                        {/volist}
+                                    </tbody>
+                                </table>
+
+                                {$datas->render()}
+                                <div class="footer">
+                                    <code>&nbsp;&nbsp;From IT Support&nbsp;&nbsp;</code>
+                                </div>
+
                             </div>     
                         </div>
                     </div>
@@ -65,8 +103,6 @@ Purchase: https://wrapbootstrap.com/theme/beyondadmin-adminapp-angularjs-mvc-WB0
     {include file='common/script' /}
     <!-- /Need Scripts -->
     <!--Page Related Scripts-->
-    <script src="__dm__/js/dmdatas.js"></script>
-
     <script type="text/javascript">
     </script>
 </body>
