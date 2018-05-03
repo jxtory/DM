@@ -126,6 +126,20 @@ class Allocation extends Dmbase
             }
         }
 
+        if(input("post.type") == "getHoldersInfo"){
+            $who = input("post.content");
+            if(!empty($who)){
+                $res = db("holders a, dm_devices b, dm_personnels c")
+                    ->field("a.*, b.an, c.personnel")
+                    ->where("a.did = b.id and a.holder = c.id")
+                    ->where("b.an|c.personnel|c.phoneticize", "like", "%" . $who ."%")
+                    ->select();
+                return $res;
+            } else {
+                return "";
+            }
+        }
+
         return $this->rehome;
     }
 
@@ -161,6 +175,17 @@ class Allocation extends Dmbase
         if(input("post.types") == "deleteHoldInfo"){
             $data = input("post.hid");
             $res = db('holders')->where('id', $data)->delete();
+            return $res;
+        }
+
+        if(input("post.types") == "storageHoldInfo"){
+            $hid = input("post.hid");
+            $history = db("holders")->where("id", $hid)->find();
+            $history['return_time'] = date("Y-m-d");
+            unset($history['id']);
+            unset($history['components']);
+            $upd = db("history")->insert($history);
+            $res = db("holders")->where("id", $hid)->delete();
             return $res;
         }
 

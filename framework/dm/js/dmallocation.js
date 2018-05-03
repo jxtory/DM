@@ -238,3 +238,64 @@
 
         // E 领用情况修改
         //----------------------------伟大的分割线---------------------------
+        //获取设备回收信息的
+        $("#ds_search").bind("input propertychange", function(){
+            $("#getHoldersInfo tbody").html("");
+            $.post(
+                    "getInfos.html",
+                    {
+                        type: "getHoldersInfo",
+                        content: function(){return $("#ds_search").val();}
+                    },
+                    function(data, status){
+                        $("#getHoldersInfo tbody").html("");
+                        if(status == "success" && data != ""){
+                            for(v in data){
+                                var content = "<tr>";
+                                content += "<td>" + data[v]['id'] + "</td>";
+                                content += "<td>" + data[v]['an'] + "</td>";
+                                content += "<td>" + data[v]['personnel'] + "</td>";
+                                content += "<td>" + data[v]['grant_date'] + "</td>";
+                                content += "<td>" + data[v]['components'] + "</td>";
+                                content += '<td><a href="javascript: void(0);" class="btn btn-blue btn-xs" data-hid="' + data[v]['id'] + '">回收</a></td>';
+                                content += "</tr>";
+                                $("#getHoldersInfo tbody").html($("#getHoldersInfo tbody").html() + content);
+
+                            }
+                        } else {
+
+                        }
+                    }
+                );
+
+        });
+
+        $("#getHoldersInfo").on('mousedown', 'a', function(){
+            bootbox.setDefaults("locale", "zh_CN");
+            var lookhid = $(this).data('hid');
+            bootbox.confirm("确认回收该设备吗", function(result){
+                if(result){
+                    $.post(
+                        "allochandle.html",
+                        {
+                            types: "storageHoldInfo",
+                            hid: lookhid
+                        },
+                        function(data){
+                            if(data == "1"){
+                                lookresult(data, 1)
+                                $(".widget-caption span").html("&nbsp;回收成功");
+                                $(".widget-caption span").css("color", "#9fff00");
+                                setTimeout(function(){
+                                    window.location.reload();
+                                },2000); 
+                            } else {
+                                bootbox.alert("回收失败");
+                            }
+                        }
+                    );
+                    
+                }
+            });
+        });
+        //----------------------------伟大的分割线---------------------------

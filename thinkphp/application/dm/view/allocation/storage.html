@@ -44,17 +44,51 @@ Purchase: https://wrapbootstrap.com/theme/beyondadmin-adminapp-angularjs-mvc-WB0
                     <div class="row">
                         <div class="well">
                             <div class="widget flat radius-bordered">
+                                <div class="well">
+                                    <span class="input-icon inverted">
+                                        <input type="text" class="form-control input-sm" id="ds_search" placeholder="输入领用人姓名、姓名拼音、或设备编号即可查询">
+                                        <i class="glyphicon glyphicon-search bg-blue"></i>
+                                    </span>
+                                </div>
                                 <div class="widget-header bg-themeprimary">
                                     <span class="widget-caption">设备回收<span></span></span>
                                 </div>
+                                <div id="getHoldersInfoDiv">
+                                    <table id="getHoldersInfo" class="table table-hover table-striped table-bordered table-condensed">
+                                        <thead>
+                                            <tr>
+                                                <th>
+                                                    #ID
+                                                </th>
+                                                <th>
+                                                    固资编号(An)
+                                                </th>
+                                                <th>
+                                                    领用人(holder)
+                                                </th>
+                                                <th>
+                                                    领用日期(grant_date)
+                                                </th>
+                                                <th>
+                                                    配件(Components)
+                                                </th>
+                                                <th>
+                                                    <span class="text-primary">操作</span>
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
 
+                                        </tbody>
+                                    </table>                                    
+                                </div>
                             </div>     
                         </div>
                     </div>
                 </div>
                 <!-- /Page Body -->
             </div>
-            <!-- /Page Content -->
+            <!-- /Page Content --> 
         </div>
         <!-- /Page Container -->
         <!-- Main Container -->
@@ -65,9 +99,10 @@ Purchase: https://wrapbootstrap.com/theme/beyondadmin-adminapp-angularjs-mvc-WB0
     {include file='common/script' /}
     <!-- /Need Scripts -->
     <!--Page Related Scripts-->
-    <script src="__dm__/js/dmdatas.js"></script>
+    <script src="__dm__/js/dmallocation.js"></script>
 
     <script type="text/javascript">
+
     </script>
 </body>
 <!--  /Body -->
