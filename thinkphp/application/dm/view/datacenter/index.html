@@ -49,9 +49,7 @@ Purchase: https://wrapbootstrap.com/theme/beyondadmin-adminapp-angularjs-mvc-WB0
                                 </div>
                                 <div>
                                     <h4>正在开发中的功能：↓</h4>
-                                    <p>人员状况、部门数量、人口最多</p>
-                                    <p>设备总数</p>
-                                    <p>供应比率(设备利用)</p>
+                                    <p>人口最多?</p>
                                     <p>库存最多的设备</p>
                                     <p>库存最少的设备</p>
                                 </div>
@@ -89,11 +87,11 @@ Purchase: https://wrapbootstrap.com/theme/beyondadmin-adminapp-angularjs-mvc-WB0
                                             <div class="databox-top no-padding ">
                                                 <div class="databox-row">
                                                     <div class="databox-cell cell-6 text-align-center bg-azure">
-                                                        <span class="databox-number">{$mans_zaizhi}个</span>
+                                                        <span class="databox-number">{$dept1}个</span>
                                                         <span class="databox-text">一级部门</span>
                                                     </div>
                                                     <div class="databox-cell cell-6 text-align-center bg-azure">
-                                                        <span class="databox-number">{$mans_lizhi}个</span>
+                                                        <span class="databox-number">{$dept2}个</span>
                                                         <span class="databox-text">二级部门</span>
                                                     </div>
                                                 </div>
@@ -108,19 +106,19 @@ Purchase: https://wrapbootstrap.com/theme/beyondadmin-adminapp-angularjs-mvc-WB0
                                             <div class="databox-top no-padding ">
                                                 <div class="databox-row">
                                                     <div class="databox-cell cell-6 text-align-center bg-azure">
-                                                        <span class="databox-number">{$mans_zaizhi}部</span>
-                                                        <span class="databox-text">出库量</span>
+                                                        <span class="databox-number">{$deviceoutside}部</span>
+                                                        <span class="databox-text">出库数量</span>
                                                     </div>
                                                     <div class="databox-cell cell-6 text-align-center bg-azure">
-                                                        <span class="databox-number">{$mans_lizhi}部</span>
-                                                        <span class="databox-text">在库量</span>
+                                                        <span class="databox-number">{$deviceinside}部</span>
+                                                        <span class="databox-text">库存数量</span>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="databox-bottom">
-                                                <span class="databox-text">设备使用率</span>
+                                                <span class="databox-text">综合使用率-{$deviceoutside/$devicesum*100}%</span>
                                                 <div class="progress progress-sm">
-                                                    <div class="progress-bar progress-bar-azure" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 1%">
+                                                    <div class="progress-bar progress-bar-azure" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: {$deviceoutside/$devicesum*100}%">
                                                         <span class="sr-only">
                                                             20% Complete
                                                         </span>
@@ -135,20 +133,16 @@ Purchase: https://wrapbootstrap.com/theme/beyondadmin-adminapp-angularjs-mvc-WB0
                                         <div class="databox radius-bordered databox-shadowed databox-graded databox-vertical">
                                             <div class="databox-top no-padding ">
                                                 <div class="databox-row">
-                                                    <div class="databox-cell cell-6 text-align-center bg-azure">
-                                                        <span class="databox-number">{$mans_zaizhi}人</span>
-                                                        <span class="databox-text">在职人数</span>
-                                                    </div>
-                                                    <div class="databox-cell cell-6 text-align-center bg-azure">
-                                                        <span class="databox-number">{$mans_lizhi}人</span>
-                                                        <span class="databox-text">离职人数</span>
+                                                    <div class="databox-cell cell-12 text-align-center bg-azure">
+                                                        <span class="databox-number">{$devicesum}部</span>
+                                                        <span class="databox-text">设备总量</span>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="databox-bottom">
-                                                <span class="databox-text">设备依赖度——开发中</span>
+                                                <span class="databox-text">设备充裕量-{$deviceinside/$devicesum*100}%</span>
                                                 <div class="progress progress-sm">
-                                                    <div class="progress-bar progress-bar-azure" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 1%">
+                                                    <div class="progress-bar progress-bar-azure" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: {$deviceinside/$devicesum*100}%">
                                                         <span class="sr-only">
                                                             20% Complete
                                                         </span>
