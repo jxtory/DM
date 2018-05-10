@@ -159,22 +159,27 @@
 
                         <ul class="submenu">
                             <li>
-                                <a href="{:url('sys/index')}">
-                                    <span class="menu-text"> 管理中心 </span>
+                                <a href="#" class="menu-dropdown">
+                                    <span class="menu-text">
+                                        管理中心
+                                    </span>
+                                    <i class="menu-expand"></i>
                                 </a>
+                                <ul class="submenu">
+                                    <li>
+                                        <a href="{:url('sys/user')}">
+                                            <span class="menu-text"> 用户管理 </span>
+                                        </a>
+                                    </li>
+                                    {if condition="$authlevelv >= 3"}
+                                    <li>
+                                        <a href="{:url('sys/datas')}">
+                                            <span class="menu-text"> 库表管理 </span>
+                                        </a>
+                                    </li>
+                                    {/if}
+                                </ul>
                             </li>
-                            <li>
-                                <a href="{:url('sys/user')}">
-                                    <span class="menu-text"> 用户管理 </span>
-                                </a>
-                            </li>
-                            {if condition="$authlevelv >= 3"}
-                            <li>
-                                <a href="{:url('sys/datas')}">
-                                    <span class="menu-text"> 库表管理 </span>
-                                </a>
-                            </li>
-                            {/if}
                             <li>
                                 <a href="{:request()->domain()}/phpmyadmin/" target="_blank">
                                     <span class="menu-text"> PhpMyAdmin </span>

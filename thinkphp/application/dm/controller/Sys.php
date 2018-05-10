@@ -12,7 +12,7 @@ class Sys extends Dmbase
 
     public function index()
     {   
-        return $this->error("尚未开放");
+        return $this->rehome;
     }
 
     public function user()
