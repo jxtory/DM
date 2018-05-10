@@ -32,6 +32,18 @@ class Datacenter extends Dmbase
     	$devicesum = db("devices")->count("id");
     	$this->assign("devicesum", $devicesum);
 
+        //设备特殊统计
+        $devtypemax = db("devices")
+            ->where("id", "not in", function($query){
+                $query->table("dm_holders")->field("did");
+            })
+            ->field("type, count(*)")
+            ->group("type")
+            ->order("count(*) desc")
+            ->select(); 
+
+        $this->assign("devtypemax", $devtypemax);
+
     	return $this->fetch();
     }
 
