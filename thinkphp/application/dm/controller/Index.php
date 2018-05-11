@@ -1,7 +1,7 @@
 <?php
 namespace app\dm\controller;
 use app\dm\controller\Dmbase;
-use Room\Names\rndChinaName;
+use Room\Names\RndChinaName;
 
 class Index extends Dmbase
 {
@@ -17,7 +17,7 @@ class Index extends Dmbase
 
     public function test()
     {
-    	$rCN = new rndChinaName();
+    	$rCN = new RndChinaName();
 
     	return $rCN->getName(2);
     }

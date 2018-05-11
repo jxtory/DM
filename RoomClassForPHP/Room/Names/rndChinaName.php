@@ -1,21 +1,20 @@
 <?php
 namespace Room\Names;
-    /*rndChinaName.class.php*/
-Class rndChinaName
+
+class RndChinaName
 {
     private $arrXing,$numbXing;
     private $arrMing,$numbMing;
+
     function __construct()
     {
         $this->getXingList();
         $this->getMingList();
-
     }
 
     /* 获取姓列表 */
     private function getXingList()
     {
-
         $this->arrXing=array(
             '赵','钱','孙','李','周','吴','郑','王','冯','陈','褚','卫','蒋',
             '沈','韩','杨','朱','秦','尤','许','何','吕','施','张','孔','曹','严','华','金','魏',
@@ -37,9 +36,7 @@ Class rndChinaName
             '太叔','申屠','公孙','仲孙','轩辕','令狐','徐离','宇文','长孙','慕容','司徒','司空');
 
         $this->numbXing = count($this->arrXing); //姓总数
-
     }
-
 
     /* 获取名列表 */
     private function getMingList()
@@ -73,7 +70,6 @@ Class rndChinaName
     {
         // mt_rand() 比rand()方法快四倍，而且生成的随机数比rand()生成的伪随机数无规律。
         return $this->arrXing[mt_rand(0,$this->numbXing-1)]; 
-
     }
 
     // 获取名字
@@ -81,7 +77,6 @@ Class rndChinaName
     {
         return $this->arrMing[mt_rand(0,$this->numbMing-1)]; 
     }
-
 
     // 获取名字
     public function getName($type=0)
@@ -105,10 +100,7 @@ Class rndChinaName
             case 0:
             default: //默认情况 1姓+2名
                 $name = $this->getXing().$this->getMing().$this->getMing();
-
-
         }
-
         return $name;
     }
 
