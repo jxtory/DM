@@ -5,7 +5,7 @@ Class rndChinaName
 {
     private $arrXing,$numbXing;
     private $arrMing,$numbMing;
-    function rndChinaName()
+    function __construct()
     {
         $this->getXingList();
         $this->getMingList();
