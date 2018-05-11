@@ -25,6 +25,12 @@ class Sys extends Dmbase
         return $this->rehome;
     }
 
+    public function demodatas()
+    {
+        return $this->fetch();
+        return $this->rehome;
+    }
+
     public function tc()
     {
         if(input('post.type') == "personnels"){
@@ -65,6 +71,30 @@ class Sys extends Dmbase
 
         if(input('post.type') == "components"){
             $sql = "truncate table dm_components";
+            $res = db()->query($sql);
+            return $res;
+        }
+
+        if(input('post.type') == "history"){
+            $sql = "truncate table dm_history";
+            $res = db()->query($sql);
+            return $res;
+        }
+
+        if(input('post.type') == "macaddress"){
+            $sql = "truncate table dm_macaddress";
+            $res = db()->query($sql);
+            return $res;
+        }
+
+        if(input('post.type') == "quality"){
+            $sql = "truncate table dm_qualityandhealth";
+            $res = db()->query($sql);
+            return $res;
+        }
+
+        if(input('post.type') == "repair"){
+            $sql = "truncate table dm_repair_record";
             $res = db()->query($sql);
             return $res;
         }

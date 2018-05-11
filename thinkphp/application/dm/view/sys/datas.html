@@ -72,21 +72,9 @@ Purchase: https://wrapbootstrap.com/theme/beyondadmin-adminapp-angularjs-mvc-WB0
                                                     </a>
                                                 </li>
                                                 <li>
-                                                    <a data-toggle="tab" href="#devicetypecmd">
+                                                    <a data-toggle="tab" href="#contentscmd">
                                                         <i class="glyphicon glyphicon-asterisk"></i>
-                                                        清空设备类型表
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a data-toggle="tab" href="#brandcmd">
-                                                        <i class="glyphicon glyphicon-asterisk"></i>
-                                                        清空设备品牌表
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a data-toggle="tab" href="#modelcmd">
-                                                        <i class="glyphicon glyphicon-asterisk"></i>
-                                                        清空设备型号表
+                                                        清空内容设置
                                                     </a>
                                                 </li>
                                                 <li>
@@ -105,6 +93,30 @@ Purchase: https://wrapbootstrap.com/theme/beyondadmin-adminapp-angularjs-mvc-WB0
                                                     <a data-toggle="tab" href="#componentscmd">
                                                         <i class="glyphicon glyphicon-asterisk"></i>
                                                         清空配件表
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a data-toggle="tab" href="#historycmd">
+                                                        <i class="glyphicon glyphicon-asterisk"></i>
+                                                        清空历史表
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a data-toggle="tab" href="#macaddresscmd">
+                                                        <i class="glyphicon glyphicon-asterisk"></i>
+                                                        清空MAC表
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a data-toggle="tab" href="#qualitycmd">
+                                                        <i class="glyphicon glyphicon-asterisk"></i>
+                                                        清空品质表
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a data-toggle="tab" href="#rrcmd">
+                                                        <i class="glyphicon glyphicon-asterisk"></i>
+                                                        清空维修记录表
                                                     </a>
                                                 </li>
                                             </ul>
@@ -152,43 +164,19 @@ Purchase: https://wrapbootstrap.com/theme/beyondadmin-adminapp-angularjs-mvc-WB0
                                                     <a href="javascript:void(0);" class="btn btn-warning shiny" id="tcpersonnels">人员表</a>
                                                     
                                                 </div>
-                                                <div id="devicetypecmd" class="tab-pane">
+                                                <div id="contentscmd" class="tab-pane">
                                                     <div class="row">
                                                         <div class="alert alert-warning fade in col-xs-12">
                                                             <button class="close" data-dismiss="alert">
                                                                 ×
                                                             </button>
                                                             <i class="fa-fw fa fa-warning"></i>
-                                                            <strong>警告</strong> 此操作将清空[设备类型表]，请谨慎操作。
+                                                            <strong>警告</strong> 此操作将清空[内容设置]，请谨慎操作。
                                                         </div>
                                                     </div>
                                                     <a href="javascript:void(0);" class="btn btn-warning shiny" id="tcdevicetype">设备类型表</a>
-                                                    
-                                                </div>
-                                                <div id="brandcmd" class="tab-pane">
-                                                    <div class="row">
-                                                        <div class="alert alert-warning fade in col-xs-12">
-                                                            <button class="close" data-dismiss="alert">
-                                                                ×
-                                                            </button>
-                                                            <i class="fa-fw fa fa-warning"></i>
-                                                            <strong>警告</strong> 此操作将清空[设备品牌表]，请谨慎操作。
-                                                        </div>
-                                                    </div>
-                                                    <a href="javascript:void(0);" class="btn btn-warning shiny" id="tcbrand">设备品牌表</a>
-                                                    
-                                                </div>
-                                                <div id="modelcmd" class="tab-pane">
-                                                    <div class="row">
-                                                        <div class="alert alert-warning fade in col-xs-12">
-                                                            <button class="close" data-dismiss="alert">
-                                                                ×
-                                                            </button>
-                                                            <i class="fa-fw fa fa-warning"></i>
-                                                            <strong>警告</strong> 此操作将清空[设备型号表]，请谨慎操作。
-                                                        </div>
-                                                    </div>
                                                     <a href="javascript:void(0);" class="btn btn-warning shiny" id="tcmodel">设备型号表</a>
+                                                    <a href="javascript:void(0);" class="btn btn-warning shiny" id="tcbrand">设备品牌表</a>
                                                     
                                                 </div>
                                                 <div id="devicescmd" class="tab-pane">
@@ -228,6 +216,58 @@ Purchase: https://wrapbootstrap.com/theme/beyondadmin-adminapp-angularjs-mvc-WB0
                                                         </div>
                                                     </div>
                                                     <a href="javascript:void(0);" class="btn btn-warning shiny" id="tccomponents">配件表</a>
+                                                    
+                                                </div>
+                                                <div id="historycmd" class="tab-pane">
+                                                    <div class="row">
+                                                        <div class="alert alert-warning fade in col-xs-12">
+                                                            <button class="close" data-dismiss="alert">
+                                                                ×
+                                                            </button>
+                                                            <i class="fa-fw fa  fa-warning"></i>
+                                                            <strong>警告</strong> 此操作将清空[历史表]，请谨慎操作。
+                                                        </div>
+                                                    </div>
+                                                    <a href="javascript:void(0);" class="btn btn-warning shiny" id="tchistory">历史表</a>
+                                                    
+                                                </div>
+                                                <div id="macaddresscmd" class="tab-pane">
+                                                    <div class="row">
+                                                        <div class="alert alert-warning fade in col-xs-12">
+                                                            <button class="close" data-dismiss="alert">
+                                                                ×
+                                                            </button>
+                                                            <i class="fa-fw fa fa-warning"></i>
+                                                            <strong>警告</strong> 此操作将清空[MAC表]，请谨慎操作。
+                                                        </div>
+                                                    </div>
+                                                    <a href="javascript:void(0);" class="btn btn-warning shiny" id="tcmacaddress">MAC地址表</a>
+                                                    
+                                                </div>
+                                                <div id="qualitycmd" class="tab-pane">
+                                                    <div class="row">
+                                                        <div class="alert alert-warning fade in col-xs-12">
+                                                            <button class="close" data-dismiss="alert">
+                                                                ×
+                                                            </button>
+                                                            <i class="fa-fw fa fa-warning"></i>
+                                                            <strong>警告</strong> 此操作将清空[品质表]，请谨慎操作。
+                                                        </div>
+                                                    </div>
+                                                    <a href="javascript:void(0);" class="btn btn-warning shiny" id="tcquality">品质健康表</a>
+                                                    
+                                                </div>
+                                                <div id="rrcmd" class="tab-pane">
+                                                    <div class="row">
+                                                        <div class="alert alert-warning fade in col-xs-12">
+                                                            <button class="close" data-dismiss="alert">
+                                                                ×
+                                                            </button>
+                                                            <i class="fa-fw fa fa-warning"></i>
+                                                            <strong>警告</strong> 此操作将清空[维修记录表]，请谨慎操作。
+                                                        </div>
+                                                    </div>
+                                                    <a href="javascript:void(0);" class="btn btn-warning shiny" id="tcrepair">维修记录表</a>
                                                     
                                                 </div>
                                             </div>

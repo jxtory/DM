@@ -1135,5 +1135,80 @@
             });
         });
 
+        //清空历史数据
+        $("#tchistory").on('click', function () {
+            // bootbox.defaults.locale = "zh_CN";
+            bootbox.confirm("真的要清空吗?", function (result) {
+                if (result) {
+                    $.post(
+                        "../sys/tc.html",
+                        {type: 'history'},
+                        function(data){
+                            bootbox.alert("已完成");
+                            setTimeout(function(){
+                                window.location.reload();
+                            },2000); 
+                        }
+                    );
+                }
+            });
+        });
+
+        //清空MAC数据
+        $("#tcmacaddress").on('click', function () {
+            // bootbox.defaults.locale = "zh_CN";
+            bootbox.confirm("真的要清空吗?", function (result) {
+                if (result) {
+                    $.post(
+                        "../sys/tc.html",
+                        {type: 'macaddress'},
+                        function(data){
+                            bootbox.alert("已完成");
+                            setTimeout(function(){
+                                window.location.reload();
+                            },2000); 
+                        }
+                    );
+                }
+            });
+        });
+
+        //清空品质数据
+        $("#tcquality").on('click', function () {
+            // bootbox.defaults.locale = "zh_CN";
+            bootbox.confirm("真的要清空吗?", function (result) {
+                if (result) {
+                    $.post(
+                        "../sys/tc.html",
+                        {type: 'quality'},
+                        function(data){
+                            bootbox.alert("已完成");
+                            setTimeout(function(){
+                                window.location.reload();
+                            },2000); 
+                        }
+                    );
+                }
+            });
+        });
+
+        //清空品质数据
+        $("#tcrepair").on('click', function () {
+            // bootbox.defaults.locale = "zh_CN";
+            bootbox.confirm("真的要清空吗?", function (result) {
+                if (result) {
+                    $.post(
+                        "../sys/tc.html",
+                        {type: 'repair'},
+                        function(data){
+                            bootbox.alert("已完成");
+                            setTimeout(function(){
+                                window.location.reload();
+                            },2000); 
+                        }
+                    );
+                }
+            });
+        });
 
         //-----------------------------------伟大的分割线------------------------------------------
