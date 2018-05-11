@@ -21,6 +21,7 @@ function setMobileNav(){
     }
     mnav.push('</div>');
     $(".page-body").prepend(mnav.join(""));
+    $(".page-body").prepend('<div class="alert alert-info fade in"> <button class="close" data-dismiss="alert"> × </button> <i class="fa-fw fa fa-info"></i> <strong>推荐!</strong> 使用PC端浏览. </div>');
 }
 
 function setNav(obj, hrefs, text){
