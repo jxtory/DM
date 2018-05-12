@@ -12,7 +12,7 @@ class Personnels extends Dmbase
 
     public function index()
     {   
-        $datas = db('personnels')->paginate(5);
+        $datas = db('personnels')->paginate(15);
         $this->assign('datas', $datas);
         return $this->fetch('index');
     }

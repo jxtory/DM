@@ -12,7 +12,7 @@ class Device extends Dmbase
 
     public function index()
     {
-        $datas = db('devices')->paginate(5);
+        $datas = db('devices')->paginate(15);
         $this->assign('datas', $datas);
         return $this->fetch("index");
     }

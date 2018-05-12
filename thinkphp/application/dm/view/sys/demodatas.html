@@ -51,25 +51,29 @@ Purchase: https://wrapbootstrap.com/theme/beyondadmin-adminapp-angularjs-mvc-WB0
 
                                 <div class="widget-body">
                                     <div class="widget-main">
+                                        <span>创建预设内容</span>
+                                        <a href="javascript: void(0)" class="btn btn-primary fa fa-plus-square" data-dp="true"> 预设部门设定 </a>
+                                        <a href="javascript: void(0)" class="btn btn-primary fa fa-plus-square" data-cn="true"> 预设设备内容 </a>
+                                        <hr>
                                         <span>随机添加1条数据：</span>
-                                        <a href="javascript: void(0)" class="btn btn-primary fa fa-plus-square"> 人员 × 1</a>
-                                        <a href="javascript: void(0)" class="btn btn-primary fa fa-plus-square"> 设备 × 1</a>
+                                        <a href="javascript: void(0)" class="btn btn-primary fa fa-plus-square" data-ps="1"> 人员 × 1</a>
+                                        <a href="javascript: void(0)" class="btn btn-primary fa fa-plus-square" data-ds="1"> 设备 × 1</a>
                                         <hr>
                                         <span>随机添加5条数据：</span>
-                                        <a href="javascript: void(0)" class="btn btn-primary fa fa-plus-square"> 人员 × 5</a>
-                                        <a href="javascript: void(0)" class="btn btn-primary fa fa-plus-square"> 设备 × 5</a>
+                                        <a href="javascript: void(0)" class="btn btn-primary fa fa-plus-square" data-ps="5"> 人员 × 5</a>
+                                        <a href="javascript: void(0)" class="btn btn-primary fa fa-plus-square" data-ds="5"> 设备 × 5</a>
                                         <hr>
                                         <span>随机添加10条数据：</span>
-                                        <a href="javascript: void(0)" class="btn btn-primary fa fa-plus-square"> 人员 × 10</a>
-                                        <a href="javascript: void(0)" class="btn btn-primary fa fa-plus-square"> 设备 × 10</a>
+                                        <a href="javascript: void(0)" class="btn btn-primary fa fa-plus-square" data-ps="10"> 人员 × 10</a>
+                                        <a href="javascript: void(0)" class="btn btn-primary fa fa-plus-square" data-ds="10"> 设备 × 10</a>
                                         <hr>
                                         <span>随机添加50条数据：</span>
-                                        <a href="javascript: void(0)" class="btn btn-primary fa fa-plus-square"> 人员 × 50</a>
-                                        <a href="javascript: void(0)" class="btn btn-primary fa fa-plus-square"> 设备 × 50</a>
+                                        <a href="javascript: void(0)" class="btn btn-primary fa fa-plus-square" data-ps="50"> 人员 × 50</a>
+                                        <a href="javascript: void(0)" class="btn btn-primary fa fa-plus-square" data-ds="50"> 设备 × 50</a>
                                         <hr>
                                         <span>随机添加100条数据：</span>
-                                        <a href="javascript: void(0)" class="btn btn-primary fa fa-plus-square"> 人员 × 100</a>
-                                        <a href="javascript: void(0)" class="btn btn-primary fa fa-plus-square"> 设备 × 100</a>
+                                        <a href="javascript: void(0)" class="btn btn-primary fa fa-plus-square" data-ps="100"> 人员 × 100</a>
+                                        <a href="javascript: void(0)" class="btn btn-primary fa fa-plus-square" data-ds="100"> 设备 × 100</a>
                                         <hr>
 
                                     </div>
@@ -93,6 +97,80 @@ Purchase: https://wrapbootstrap.com/theme/beyondadmin-adminapp-angularjs-mvc-WB0
     <!--Page Related Scripts-->
 
     <script type="text/javascript">
+        function addDatas(who, nums){
+            $.post(
+                '{:url("dm/sys/getdemodata")}',
+                {
+                    type : who,
+                    nums : nums
+                },
+                function(data){
+                    if(data){
+                        bootbox.alert("添加成功！");
+                    } else {
+                        bootbox.alert("添加失败！")
+                    }
+                }
+            );
+
+        }
+
+        function addDept(){
+            $.post(
+                '{:url("dm/sys/getdemodata")}',
+                {
+                    type : "dp",
+                    action : "addDept" 
+                },
+                function(data){
+                    if(data){
+                        bootbox.alert("添加成功！");
+                    }
+                }
+            );
+        }
+
+        function addComponents(){
+            $.post(
+                '{:url("dm/sys/getdemodata")}',
+                {
+                    type : "cn",
+                    action : "addComponents" 
+                },
+                function(data){
+                    if(data){
+                        bootbox.alert("添加成功！");
+                    }
+                }
+            );
+        }
+
+        $(function(){
+            $("a").click(function(){
+                //添加预设部门
+                if(typeof($(this).data("dp")) != "undefined"){
+                    addDept();
+                }
+
+                //添加预设部门
+                if(typeof($(this).data("cn")) != "undefined"){
+                    addComponents();
+                }
+
+                //添加人员
+                if(typeof($(this).data("ps")) != "undefined"){
+                    addDatas("ps", $(this).data("ps"));
+                }
+
+                //添加设备
+                if(typeof($(this).data("ds")) != "undefined"){
+                    addDatas("ds", $(this).data("ds"));
+                }
+
+            });
+
+
+        });
 
     </script>
 </body>

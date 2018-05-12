@@ -15,11 +15,4 @@ class Index extends Dmbase
     	return $this->error("尚未开放");
     }
 
-    public function test()
-    {
-    	$rCN = new RndChinaName();
-
-    	return $rCN->getName(2);
-    }
-
 }
