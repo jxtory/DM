@@ -44,6 +44,17 @@ class Datacenter extends Dmbase
 
         $this->assign("devtypemax", $devtypemax);
 
+        $devtypemin = db("devices")
+            ->where("id", "not in", function($query){
+                $query->table("dm_holders")->field("did");
+            })
+            ->field("type, count(*)")
+            ->group("type")
+            ->order("count(*) asc")
+            ->select(); 
+
+        $this->assign("devtypemin", $devtypemin);
+
         if(db("personnels")->count("id") == 0){
             return $this->error("人员数据不完整");
         }
