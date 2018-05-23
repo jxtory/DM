@@ -12,7 +12,7 @@ class Index extends Dmbase
 
     public function window()
     {
-    	return $this->error("尚未开放");
+    	return $this->error("正在开发中…………");
     }
 
 }

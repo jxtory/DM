@@ -6,13 +6,14 @@ class Usercenter extends Dmbase
 {
     public function index()
     {
-        $this->levelCheck(2);
-    	$datas = db("user a", $this->dbUser)
+        // $this->levelCheck(2);
+        $datas = db("user a", $this->dbUser)
             ->field("a.*, b.uid, b.authlevel")
-    		->join("auth b", "a.id = b.uid")
+            ->join("auth b", "a.id = b.uid")
             ->paginate(15);
 
         $this->assign("datas", $datas);
+        return $this->supperCheck();
     	return $this->fetch("");
 
     }

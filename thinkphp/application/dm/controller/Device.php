@@ -17,6 +17,11 @@ class Device extends Dmbase
         return $this->fetch("index");
     }
 
+    public function other()
+    {
+        return $this->error("尚未开放");
+    }
+
     //添加设备页面
     public function add_device()
     {
